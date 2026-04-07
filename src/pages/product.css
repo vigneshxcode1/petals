@@ -1,0 +1,156 @@
+/* Section */
+.product-section {
+  padding: 60px 20px;
+  background: #f9f9fb;
+  min-height: 100vh;
+}
+
+/* Title */
+.grid-title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  margin-bottom: 40px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 1400px;
+  margin: auto;
+}
+
+/* Card */
+.product-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+
+  /* animation */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 0.5s ease forwards;
+  animation-delay: var(--delay);
+
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Image */
+.img-wrap {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  background: #eee;
+}
+
+.img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.4s;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+}
+
+/* Info */
+.product-info {
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #222;
+  line-height: 1.3;
+}
+
+/* Price */
+.price-box {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.cut {
+  font-size: 0.75rem;
+  text-decoration: line-through;
+  color: #888;
+}
+
+.price {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+/* Button */
+.btn {
+  margin-top: auto;
+  padding: 8px;
+  border: none;
+  border-radius: 6px;
+  background: #a855f7;
+  color: #fff;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  background: #7e22ce;
+}
+
+/* Animation */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .product-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .name {
+    font-size: 0.75rem;
+  }
+
+  .price {
+    font-size: 0.9rem;
+  }
+
+  .btn {
+    font-size: 0.7rem;
+    padding: 6px;
+  }
+}

@@ -1,0 +1,106 @@
+
+.custom-navbar {
+    background-color: transparent !important;
+    box-shadow: none;
+    border: none;
+  }
+  .titlename{
+    font-size: 30px;
+  }
+  .custom-navbar .nav-link {
+    color: #000000; /* or any other color that contrasts with your background */
+  }
+  
+  .custom-navbar .navbar-brand {
+    color: #fff;
+  }
+  
+  .toggle .navbar-toggler-icon {
+    
+  }
+
+#responsive-navbar-nav{
+   
+}
+.toggle{
+    margin-left:0;
+
+}
+
+.cart-img{
+    width: 40px;
+   
+}
+.login{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+.register{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+
+@font-face{
+    src: url("../../fonts/Mont-ExtraLightDEMO.otf");
+    font-family: "mont";
+}
+.headtitle{
+    font-family: 'monto';
+    font-size: 30px;
+    font-weight: 700;
+    margin-top: 15px;
+    
+}
+
+#headtitle{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media (max-width: 768px) {
+    .titleimg {
+
+      height: 80;
+      width: 100px;
+
+    }
+
+    #headtitle{
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  }
+
+
+.cart-img{
+    margin-top: -10px;
+}
+#bg-body-tertiary{
+    border: none;
+    margin-top: -20px;
+  margin-bottom: -20px;
+ 
+}
+
+.bg-body-tertiary .toggle{
+border: none;
+background-color: rgba(255, 0, 0, 0);
+}
+
+.navbar-wrapper {
+    max-height: 1000px; /* or any size like 1000px, 960px */
+    margin: 0 auto;
+    width: 100%;
+    background-color: rgb(31, 93, 148);
+  }
+  
+  .titleimg {
+    width: 80px; /* adjust logo size */
+  }
+  
+  .cart-img {
+    width: 30px;
+  }
+  

@@ -1,0 +1,728 @@
+/* ============================================================
+   productDetails.css — Full Product Detail Page Styles
+   ============================================================ */
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,300&family=Playfair+Display:wght@600;800&display=swap");
+
+/* ── Variables ─────────────────────────────────────────────── */
+:root {
+  --pri: #000000;
+  --pri-light: #EDE9FB;
+  --pri-dark: #4a2a8e;
+  --acc: #22C97A;
+  --acc-light: #E6FAF2;
+  --danger: #ef4444;
+  --warn: #f59e0b;
+
+  --text: #1a1a2e;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
+
+  --border: #e5e7eb;
+  --surface: #ffffff;
+  --bg: #f8f7fc;
+
+  --radius: 16px;
+  --radius-sm: 8px;
+  --radius-xs: 6px;
+
+  --shadow-card: 0 4px 32px rgba(108, 63, 197, 0.08);
+  --shadow-hover: 0 8px 40px rgba(108, 63, 197, 0.16);
+  --shadow-btn: 0 4px 16px rgba(108, 63, 197, 0.28);
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  --transition: 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Base Reset ─────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Loading State ──────────────────────────────────────────── */
+.pd-loading {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-family: var(--font-body);
+}
+
+.pd-loading-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.pd-loading-text {
+  font-size: 15px;
+  color: var(--text-muted);
+  letter-spacing: 0.5px;
+}
+
+.pd-error {
+  min-height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--danger);
+  padding: 24px;
+  text-align: center;
+}
+
+/* ── Page Layout ─────────────────────────────────────────────── */
+.pd-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  font-family: var(--font-body);
+  color: var(--text);
+}
+
+/* ── Breadcrumb ──────────────────────────────────────────────── */
+.pd-breadcrumb {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-wrap: wrap;
+  animation: pdFadeIn 0.4s ease both;
+}
+
+.pd-breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.pd-breadcrumb a:hover {
+  color: var(--pri);
+}
+
+.pd-bc-sep {
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.pd-bc-current {
+  color: var(--pri);
+  font-weight: 600;
+}
+
+/* ── Card ────────────────────────────────────────────────────── */
+.pd-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  animation: pdFadeUp 0.5s ease both;
+}
+
+/* ── Product Grid ────────────────────────────────────────────── */
+.pd-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+@media (max-width: 768px) {
+  .pd-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Gallery ─────────────────────────────────────────────────── */
+.pd-gallery {
+  position: relative;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  padding: 16px;
+  border-radius: var(--radius) 0 0 var(--radius);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .pd-gallery {
+    border-radius: var(--radius) var(--radius) 0 0;
+    min-height: 280px;
+  }
+}
+
+/* Badges */
+.pd-badge {
+  position: absolute;
+  top: 16px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 13px;
+  border-radius: 50px;
+  animation: pdBadgePop 0.5s ease both;
+}
+
+.pd-badge-sale {
+  left: 16px;
+  background: var(--pri);
+  color: #fff;
+  animation-delay: 0.3s;
+}
+
+.pd-badge-new {
+  right: 16px;
+  background: var(--acc);
+  color: #fff;
+  animation-delay: 0.4s;
+}
+
+/* Nav arrows */
+.pd-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--pri);
+  font-size: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.10);
+  line-height: 1;
+}
+
+.pd-nav:hover {
+  background: var(--pri);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(108, 63, 197, 0.25);
+}
+
+.pd-nav-prev { left: 12px; }
+.pd-nav-next { right: 12px; }
+
+/* Main Image */
+.pd-main-wrap {
+  width: 100%;
+  height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .pd-main-wrap {
+    height: 240px;
+  }
+}
+
+.pd-main-img {
+  max-width: 78%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+  opacity: 0;
+  transform: scale(0.96);
+  transition: opacity 0.35s ease, transform 0.35s ease, box-shadow 0.3s;
+  cursor: zoom-in;
+}
+
+.pd-img-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pd-main-img:hover {
+  transform: scale(1.04);
+  box-shadow: 0 12px 40px rgba(108, 63, 197, 0.15);
+}
+
+.pd-no-img {
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+/* Dots */
+.pd-dots {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.pd-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--border);
+  border: none;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  padding: 0;
+}
+
+.pd-dot-active {
+  background: var(--pri);
+  transform: scale(1.3);
+}
+
+/* Thumbnails */
+.pd-thumbs {
+  display: flex;
+  gap: 8px;
+  padding: 10px 16px 4px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pd-thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-xs);
+  cursor: pointer;
+  border: 2.5px solid transparent;
+  object-fit: cover;
+  transition: border-color var(--transition), transform var(--transition);
+  background: var(--border);
+}
+
+.pd-thumb-active,
+.pd-thumb:hover {
+  border-color: var(--pri);
+  transform: scale(1.06);
+}
+
+/* ── Info Panel ───────────────────────────────────────────────── */
+.pd-info {
+  padding: 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  animation: pdFadeUp 0.5s 0.1s ease both;
+  overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+  .pd-info {
+    padding: 20px 18px;
+  }
+}
+
+/* Category Tag */
+.pd-category-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--pri);
+  background: var(--pri-light);
+  padding: 4px 12px;
+  border-radius: 50px;
+  margin-bottom: 12px;
+  animation: pdSlideIn 0.4s 0.2s ease both;
+}
+
+/* Product Name */
+.pd-name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--text);
+  margin-bottom: 4px;
+  animation: pdFadeUp 0.45s 0.15s ease both;
+}
+
+@media (max-width: 768px) {
+  .pd-name {
+    font-size: 22px;
+  }
+}
+
+/* Color */
+.pd-color {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+  animation: pdFadeIn 0.4s 0.25s ease both;
+}
+
+/* Price Row */
+.pd-price-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+  animation: pdFadeUp 0.4s 0.2s ease both;
+}
+
+.pd-price-now {
+
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--pri);
+}
+
+.pd-price-was {
+  font-size: 16px;
+  text-decoration: line-through;
+  color: var(--text-light);
+}
+
+.pd-discount-pill {
+  background: #fee2e2;
+  color: #dc2626;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 50px;
+  letter-spacing: 0.3px;
+  animation: pdBadgePop 0.4s 0.35s ease both;
+}
+
+/* Free Shipping */
+.pd-free-ship {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--acc);
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
+}
+
+/* Stock Bar */
+.pd-stock-bar {
+  margin-bottom: 18px;
+  animation: pdFadeUp 0.4s 0.3s ease both;
+}
+
+.pd-stock-label {
+  font-size: 12px;
+  color: var(--warn);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.pd-stock-track {
+  height: 5px;
+  background: var(--border);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.pd-stock-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--pri), var(--acc));
+  border-radius: 5px;
+  transition: width 1s ease;
+  animation: pdFadeIn 1s 0.6s ease both;
+}
+
+/* Section Labels */
+.pd-section {
+  margin-bottom: 18px;
+}
+
+.pd-section-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 9px;
+}
+
+/* Size Buttons */
+.pd-size-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  animation: pdFadeUp 0.4s 0.3s ease both;
+}
+
+.pd-size-btn {
+  padding: 8px 20px;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 600;
+  font-family: var(--font-body);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.pd-size-btn:hover {
+  border-color: var(--pri);
+  color: var(--pri);
+  background: var(--pri-light);
+}
+
+.pd-size-active {
+  border-color: var(--pri);
+  background: var(--pri);
+  color: #fff;
+  transform: scale(1.04);
+}
+
+/* Quantity */
+.pd-qty-row {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  animation: pdFadeUp 0.4s 0.35s ease both;
+}
+
+.pd-qty-btn {
+  width: 40px;
+  height: 42px;
+  border: none;
+  background: var(--bg);
+  color: var(--pri);
+  font-size: 22px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), color var(--transition);
+  font-family: var(--font-body);
+  line-height: 1;
+}
+
+.pd-qty-btn:hover {
+  background: var(--pri);
+  color: #fff;
+}
+
+.pd-qty-val {
+  width: 52px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  background: var(--surface);
+  border-left: 1.5px solid var(--border);
+  border-right: 1.5px solid var(--border);
+  transition: color var(--transition), transform var(--transition);
+  user-select: none;
+}
+
+/* CTA Row */
+.pd-cta-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  animation: pdFadeUp 0.4s 0.4s ease both;
+}
+
+.pd-btn-cart {
+  flex: 1;
+  padding: 13px 20px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--pri);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  letter-spacing: 0.4px;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.pd-btn-cart:hover {
+  background: var(--pri-dark);
+  box-shadow: var(--shadow-btn);
+  transform: translateY(-1px);
+}
+
+.pd-btn-cart:active {
+  transform: scale(0.97);
+}
+
+.pd-btn-wish {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--surface);
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--transition), background var(--transition), transform var(--transition);
+  line-height: 1;
+}
+
+.pd-btn-wish:hover {
+  border-color: #f87171;
+  background: #fff5f5;
+  transform: scale(1.08);
+}
+
+.pd-wish-active {
+  border-color: #ef4444;
+  background: #fff5f5;
+  color: #ef4444;
+}
+
+/* Trust Row */
+.pd-trust-row {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+  animation: pdFadeIn 0.5s 0.45s ease both;
+}
+
+.pd-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.pd-trust-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--pri-light);
+  color: var(--pri);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+/* Accordion */
+.pd-accord {
+  border-top: 1px solid var(--border);
+  animation: pdFadeIn 0.5s 0.5s ease both;
+}
+
+.pd-accord-item {
+  border-bottom: 1px solid var(--border);
+}
+
+.pd-accord-hdr {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  background: none;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-body);
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  transition: color var(--transition);
+  letter-spacing: 0.2px;
+}
+
+.pd-accord-hdr:hover {
+  color: var(--pri);
+}
+
+.pd-accord-arrow {
+  font-size: 11px;
+  color: var(--text-muted);
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-shrink: 0;
+}
+
+.pd-accord-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pd-accord-open {
+  max-height: 600px;
+}
+
+.pd-accord-inner {
+  padding-bottom: 14px;
+}
+
+.accord-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 0;
+}
+
+.accord-list li {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.65;
+  padding-left: 18px;
+  position: relative;
+}
+
+.accord-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: var(--pri);
+  font-size: 11px;
+  top: 2px;
+}
+
+/* ── Animations ───────────────────────────────────────────────── */
+@keyframes pdFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pdFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pdSlideIn {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pdBadgePop {
+  0%   { transform: scale(0.6); }
+  80%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}

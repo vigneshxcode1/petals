@@ -1,0 +1,72 @@
+/* Main Banner */
+.banner {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: 'DM Sans', sans-serif;
+  /* Gradient background */
+  background: linear-gradient(135deg, #d488ed, #7f579b);
+}
+
+/* Content */
+.banner-content {
+  text-align: center;
+  max-width: 800px;
+}
+
+/* Brand */
+.brand {
+  color: #fff;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+/* Heading */
+.headline {
+  color: #fff;
+  font-size: 2.2rem;
+  line-height: 1.4;
+}
+
+.headline span {
+  font-weight: 400;
+  font-size: 1.4rem;
+}
+
+/* Button */
+.cta-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 25px;
+  background: #fff;
+  color: #6a0dad;
+  text-decoration: none;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.cta-btn:hover {
+  background: #f1f1f1;
+  transform: translateY(-2px);
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+  .headline {
+    font-size: 1.5rem;
+  }
+
+  .headline span {
+    font-size: 1rem;
+  }
+
+  .cta-btn {
+    padding: 8px 18px;
+    font-size: 0.9rem;
+  }
+}
