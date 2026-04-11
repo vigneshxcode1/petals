@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./CardSlider.css";
 
-const BASE_URL = "https://muthushop.onrender.com";
+const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
 /* Skeleton Loader */
 const SkeletonCard = () => (

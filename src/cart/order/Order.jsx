@@ -4,7 +4,7 @@ import axios from "axios";
 import "../cart.css";
 
 
-const BASE_URL = "https://muthushop.onrender.com";
+const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
 const ShippingPage = () => {
   const [name, setName] = useState("");

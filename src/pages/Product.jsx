@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import Navbar from "../componets/Navbar/Navbar";
 import InfiniteScroll from "react-infinite-scroll-component";
 
-const BASE_URL = "https://muthushop.onrender.com";
+const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
 function GridExample() {
   const [products, setProducts] = useState([]);

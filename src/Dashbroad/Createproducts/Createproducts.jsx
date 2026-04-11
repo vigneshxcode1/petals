@@ -5,7 +5,7 @@ import axios from "axios";
 import "./toastify.css";
 import Dashbroad from "../Dashbroad";
 
-  const BASE_URL = "https://muthushop.onrender.com";
+  const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
 //const BASE_URL = "http://localhost:8000";
 

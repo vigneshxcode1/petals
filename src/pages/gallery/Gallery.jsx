@@ -12,7 +12,7 @@ const Gallery = () => {
   useEffect(() => {
     const fetchGalleryImages = async () => {
       try {
-        const response = await axios.get("https://muthushop.onrender.com/api/v1/gallery");
+        const response = await axios.get("https://petals-backend-p9st.onrender.com/api/v1/gallery");
         const imageUrls = response.data.map((image) => image.publicUrl).sort((a, b) => {
           const dateA = new Date(a.createdAt);
           const dateB = new Date(b.createdAt);

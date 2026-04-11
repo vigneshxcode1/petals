@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Trendingshirt.css";
 
-const BASE_URL = "https://muthushop.onrender.com";
+const BASE_URL = "https://petals-backend-p9st.onrender.com";
 // const BASE_URL = "http://localhost:8000";
 
 const Trendingshirt = () => {

@@ -10,7 +10,7 @@ import Navbar from "../Navbar/Navbar.jsx";
 import { addCartItem } from "../../localStorageHelpers.jsx";
 import Bestseller from "../../componets/Product/slidercard/Bestseller.jsx";
 
-const BASE_URL = "https://muthushop.onrender.com";
+const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState(null);

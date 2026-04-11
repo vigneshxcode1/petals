@@ -10,7 +10,7 @@ import "./Login.css";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "./firebase";
 
-const BASE_URL = "https://muthushop.onrender.com";
+const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
 function Login() {
   const [email, setEmail] = useState("");

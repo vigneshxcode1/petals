@@ -4,7 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import Dashbroad from "../Dashbroad";
 import { toast } from "react-toastify";
 
-  const BASE_URL = "https://muthushop.onrender.com";
+  const BASE_URL = "https://petals-backend-p9st.onrender.com";
   
 export const Deletedproducts=()=>{
   const [products, setProducts] = useState([]);
