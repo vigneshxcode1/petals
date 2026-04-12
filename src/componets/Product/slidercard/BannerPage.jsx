@@ -91,7 +91,7 @@ import { Link } from "react-router-dom";
 import "./Banner.css";
 
 /* ── swap these imports for your real images ── */
-import heroImg from "../../../assets/hero-products.jpg";
+import heroImg from "../../../assets/hero.jpeg";
 import hairImg from "../../../assets/product-branding-packaging.jpg";
 import skinImg from "../../../assets/beach-skincare-product-still-life.jpg";
 import bestImg from "../../../assets/serum-bottle-flower-arrangement.jpg";
@@ -150,9 +150,24 @@ export default function Banner() {
             ))}
           </div>
         </div>
+
         {/* RIGHT — replace src with your hero product image */}
+        <div className="bn-right">
+          {/* floating petal SVGs */}
+          <span className="petal petal-1" aria-hidden="true">🌸</span>
+          <span className="petal petal-2" aria-hidden="true">🌿</span>
+          <span className="petal petal-3" aria-hidden="true">🌸</span>
+          <span className="petal petal-4" aria-hidden="true">🌿</span>
+          <span className="petal petal-5" aria-hidden="true">🌸</span>
 
-
+          <div className="bn-img-wrap">
+            <img
+              src={heroImg}
+              alt="Muthu's Petals hero products"
+              className="bn-hero-img"
+            />
+          </div>
+        </div>
       </section>
 
       {/* ═══════════ CATEGORY CARDS ═══════════ */}
