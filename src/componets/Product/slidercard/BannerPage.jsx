@@ -57,11 +57,11 @@ export default function Banner() {
     <div className="banner-root">
 
 
-      <div className="bg-float-images">
+      {/* <div className="bg-float-images">
         <img src={"https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQBzy1Q9TxJ7et4ksLNXNfcVdfAvXEciTeMU0R4WVEDghPAbcaV4EMpVN7DtjkKzcahxx9SzNzJmGxsmO_caspLP98ziZ70Sc8k7lFg2Ze68Pw5k9mH7Czyfg"} alt="" />
         <img src={"https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"} alt="" />
         <img src={"https://www.vilvahstore.com/cdn/shop/files/Firstcard_1.jpg?v=1769172467&width=700"} alt="" />
-      </div>
+      </div> */}
       {/* ═══════════ HERO ═══════════ */}
       <section className="bn-hero">
 
