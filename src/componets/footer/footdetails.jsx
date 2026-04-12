@@ -34,6 +34,16 @@ const Footer = () => {
           <p><Link to="/contact">Social Media</Link></p>
         </div>
 
+
+ <div className="footer-col">
+          <h3><a href="">social media</a> </h3>
+          <p> <a href="">Instagram</a></p>
+          <p> <a href="">facebook</a></p>
+          <p> <a href="">Youtube</a></p>
+         
+        </div>
+
+
         {/* Info */}
         <div className="footer-col">
           <h3>Info</h3>

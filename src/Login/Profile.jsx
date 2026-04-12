@@ -46,7 +46,7 @@ const Profile = () => {
           <a className="zculture-shop" href="/home">SHOP</a>
         </div>
       ) : (
-        <p className="zculture-profile-loading">Loading...</p>
+        <p className="zculture-profile-loading"></p>
       )}
     </div>
     <About/>

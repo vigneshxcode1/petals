@@ -80,7 +80,7 @@ const About = () => {
           ref={(el) => (elementsRef.current[5] = el)}
           style={{ "--delay": "0.44s" }}
         >
-          {["100% Natural", "Cruelty Free", "No Chemicals", "Handcrafted"].map((label) => (
+          {["Naturally derived ingredients", "Cruelty Free (Eco Conscious)", "Paraben or Sulfats free", "Made With Love And Care"].map((label) => (
             <span className="about__pill" key={label}>{label}</span>
           ))}
         </div>

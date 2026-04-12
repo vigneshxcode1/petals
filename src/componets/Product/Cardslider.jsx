@@ -5,121 +5,155 @@ import "./CardSlider.css";
 
 const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
-/* Skeleton Loader */
+const BADGES = ["BEST SELLER", "TRENDING", "NEW ARRIVAL", "HOT PICK", "TOP RATED"];
+
+const StarRating = ({ rating = 4.5, count = 0 }) => {
+  const stars = Array.from({ length: 5 }, (_, i) => {
+    const filled = i + 1 <= Math.floor(rating);
+    const half = !filled && i < rating;
+    return { filled, half };
+  });
+
+  return (
+    <div className="star-row">
+      <span className="stars">
+        {stars.map((s, i) => (
+          <span key={i} className={`star ${s.filled ? "filled" : s.half ? "half" : "empty"}`}>
+            ★
+          </span>
+        ))}
+      </span>
+      <span className="review-count">{rating.toFixed(2)} | {count} reviews</span>
+    </div>
+  );
+};
+
 const SkeletonCard = () => (
   <div className="product-card skeleton-card">
     <div className="skeleton skeleton-img" />
-    <div className="skeleton skeleton-title" />
-    <div className="skeleton skeleton-price" />
-    <div className="skeleton skeleton-btn" />
+    <div className="card-body">
+      <div className="skeleton skeleton-line long" />
+      <div className="skeleton skeleton-line medium" />
+      <div className="skeleton skeleton-line short" />
+    </div>
   </div>
 );
 
-/* Product Card */
 const ProductCard = ({ product, index }) => {
   const navigate = useNavigate();
   const ref = useRef(null);
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          el.classList.add("show");
+          setTimeout(() => el.classList.add("show"), index * 60);
           observer.unobserve(el);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
     if (el) observer.observe(el);
     return () => observer.disconnect();
-  }, []);
+  }, [index]);
 
   const discount =
     product.cutprice && product.price
-      ? Math.round(
-          ((product.cutprice - product.price) / product.cutprice) * 100
-        )
+      ? Math.round(((product.cutprice - product.price) / product.cutprice) * 100)
       : null;
+
+  const badge = BADGES[index % BADGES.length];
+  const fakeRating = parseFloat((4.5 + Math.random() * 0.49).toFixed(2));
+  const fakeCount = Math.floor(Math.random() * 1500) + 100;
 
   return (
     <div
       className="product-card"
       ref={ref}
-      style={{ "--delay": `${index * 0.05}s` }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={() => navigate(`/products/${product._id}`)}
     >
-      <div
-        className="img-box"
-        onClick={() => navigate(`/products/${product._id}`)}
-      >
+      <div className="img-wrapper">
         {product.images?.length ? (
-          <img src={product.images[0]} alt={product.name} />
+          <img
+            src={product.images[0]}
+            alt={product.name}
+            className={`card-img ${hovered ? "zoomed" : ""}`}
+          />
         ) : (
           <div className="no-img">No Image</div>
         )}
 
-        {discount > 0 && <span className="badge">{discount}% OFF</span>}
+        <span className="badge-label">{badge}</span>
 
-        <div className="overlay">
-          <button onClick={() => navigate(`/products/${product._id}`)}>
-            Quick View
-          </button>
+        {discount > 0 && (
+          <span className="discount-bubble">{discount}% OFF</span>
+        )}
+
+        <div className={`quick-view-bar ${hovered ? "visible" : ""}`}>
+          <span>Quick View</span>
         </div>
       </div>
 
-      <div className="info">
-        <p className="name">{product.name}</p>
+      <div className="card-body">
+        <p className="product-name">{product.name}</p>
 
-        <div className="price-box">
+        <StarRating rating={fakeRating} count={fakeCount} />
+
+        <div className="price-row">
+          <span className="mrp-label">MRP:</span>
           {product.cutprice && (
-            <span className="cut">₹{product.cutprice}</span>
+            <span className="original-price">₹{product.cutprice}</span>
           )}
-          <span className="price">₹{product.price}</span>
+          <span className="sale-price">₹{product.price}</span>
+          {discount > 0 && (
+            <span className="off-pill">{discount}% OFF</span>
+          )}
         </div>
-
-        <button
-          className="btn"
-          onClick={() => navigate(`/products/${product._id}`)}
-        >
-          View Details
-        </button>
       </div>
     </div>
   );
 };
 
-/* Main Component */
 const Trendingshirt = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [activeTab, setActiveTab] = useState("All");
+
+  const tabs = ["All", "Hair", "Skin", "Body"];
 
   useEffect(() => {
-    const fetch = async () => {
+    const fetchData = async () => {
       try {
-        const res = await axios.get(`${BASE_URL}/api/v1/products`);
+        const res = await axios.get(`${BASE_URL}/api/v1/products?category=Shampoo`);
         const sorted = res.data.product.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
-        setProducts(sorted.slice(0, 15));
+        setProducts(sorted.slice(0, 16));
       } catch (err) {
         console.error(err);
       } finally {
         setLoading(false);
       }
     };
-    fetch();
+    fetchData();
   }, []);
 
   return (
     <section className="products-section">
-      <h2 className="title">New Arrivals</h2>
-      <p className="subtitle">Latest natural products for you</p>
+      <div className="section-header">
+        <h2 className="section-title">New Arrivals</h2>
+        <p className="section-sub">Latest natural products, curated for you</p>
 
-      <div className="grid">
+       
+      </div>
+
+      <div className="product-grid">
         {loading
-          ? Array.from({ length: 8 }).map((_, i) => (
-              <SkeletonCard key={i} />
-            ))
+          ? Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)
           : products.map((p, i) => (
               <ProductCard key={p._id} product={p} index={i} />
             ))}
