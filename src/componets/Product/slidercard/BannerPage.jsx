@@ -8,7 +8,7 @@ import heroImg from "../../../assets/hero3.jpeg";
 import heroImg2 from "../../../assets/hero2.jpeg";
 import heroImg3 from "../../../assets/hero4.jpeg";
 import heroImg4 from "../../../assets/hero6.jpeg";
-import heroImg5  from "../../../assets/hero.jpeg";
+import heroImg5 from "../../../assets/hero.jpeg";
 import heroImg6 from "../../../assets/hero8.jpeg";
 import heroImg7 from "../../../assets/hero5.jpeg";
 import heroImg8 from "../../../assets/hero7.jpeg";
@@ -19,29 +19,29 @@ import bestImg from "../../../assets/serum-bottle-flower-arrangement.jpg";
 
 const images = [
   heroImg, heroImg2, heroImg3, heroImg4,
-  heroImg5,heroImg6,heroImg7,heroImg8
+  heroImg5, heroImg6, heroImg7, heroImg8
 ];
- 
+
 const TRUST_PILLS = [
   "Toxin Free",
   "Cruelty Free",
   "Paraben & Sulfate Free",
   "Dermatologist Tested",
 ];
- 
+
 const CATEGORIES = [
   { label: "Hair Care", img: hairImg, href: "/products?category=haircare" },
   { label: "Skin Care", img: skinImg, href: "/products?category=skincare" },
   { label: "Best Sellers", img: bestImg, href: "/products?sort=bestseller" },
 ];
- 
+
 export default function Banner() {
   const [slide, setSlide] = useState({
     current: images[0],
     prev: null,
     tick: 0,
   });
- 
+
   useEffect(() => {
     const interval = setInterval(() => {
       setSlide((s) => ({
@@ -52,38 +52,44 @@ export default function Banner() {
     }, 3000);
     return () => clearInterval(interval);
   }, []);
- 
+
   return (
     <div className="banner-root">
- 
+
+
+      <div className="bg-float-images">
+        <img src={"https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQBzy1Q9TxJ7et4ksLNXNfcVdfAvXEciTeMU0R4WVEDghPAbcaV4EMpVN7DtjkKzcahxx9SzNzJmGxsmO_caspLP98ziZ70Sc8k7lFg2Ze68Pw5k9mH7Czyfg"} alt="" />
+        <img src={"https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"} alt="" />
+        <img src={"https://www.vilvahstore.com/cdn/shop/files/Firstcard_1.jpg?v=1769172467&width=700"} alt="" />
+      </div>
       {/* ═══════════ HERO ═══════════ */}
       <section className="bn-hero">
- 
+
         {/* decorative blobs */}
         <span className="bn-blob bn-blob--left" aria-hidden="true" />
         <span className="bn-blob bn-blob--right" aria-hidden="true" />
- 
+
         {/* LEFT */}
         <div className="bn-left">
           <p className="bn-eyebrow">Natural Skincare &amp; Haircare</p>
- 
+
           <h1 className="bn-h1">
             Muthu's Petals.<br />
             <span className="bn-h1-em">Nature's Care for You.</span>
           </h1>
- 
+
           <p className="bn-sub">
             At Muthus Petals, we believe in simple, honest beauty.
             Experience gentle, toxin-free skincare and haircare crafted
             from nature to nourish your skin, strengthen your hair,
             and bring out your natural glow.
           </p>
- 
+
           <div className="bn-btns">
             <Link to="/products" className="bn-btn-fill">Shop Now</Link>
             <Link to="/ingredients" className="bn-btn-outline">Know Our Ingredients</Link>
           </div>
- 
+
           <div className="bn-trust">
             {TRUST_PILLS.map((p) => (
               <span key={p} className="bn-trust-pill">
@@ -93,7 +99,7 @@ export default function Banner() {
             ))}
           </div>
         </div>
- 
+
         {/* RIGHT — 3D sliding image grid */}
         <div className="bn-right">
           <span className="petal petal-1" aria-hidden="true">🌸</span>
@@ -101,9 +107,9 @@ export default function Banner() {
           <span className="petal petal-3" aria-hidden="true">🌸</span>
           <span className="petal petal-4" aria-hidden="true">🌿</span>
           <span className="petal petal-5" aria-hidden="true">🌸</span>
- 
+
           <div className="bn-img-wrap">
- 
+
             {/* Outgoing image — slides out to the left */}
             {slide.prev && (
               <img
@@ -113,7 +119,7 @@ export default function Banner() {
                 className="slide-img slide-img--out"
               />
             )}
- 
+
             {/* Incoming image — flies in from the right */}
             <img
               key={`in-${slide.tick}`}
@@ -121,11 +127,11 @@ export default function Banner() {
               alt="hero"
               className="slide-img slide-img--in"
             />
- 
+
           </div>
         </div>
       </section>
- 
+
       {/* ═══════════ CATEGORY CARDS ═══════════ */}
       <section className="bn-cats">
         {CATEGORIES.map(({ label, img, href }) => (
@@ -137,7 +143,7 @@ export default function Banner() {
           </Link>
         ))}
       </section>
- 
+
     </div>
   );
 }

@@ -1,6 +1,143 @@
 /* ══════════════════════════════
    ROOT
 ══════════════════════════════ */
+
+.bg-float-images {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bg-float-images img {
+  position: absolute;
+  width: 180px;
+  opacity: 0.08;
+  filter: blur(2px);
+  animation: floatMove 12s infinite ease-in-out alternate;
+}
+
+/* Position each image randomly */
+.bg-float-images img:nth-child(1) {
+  top: 10%;
+  left: 5%;
+}
+
+.bg-float-images img:nth-child(2) {
+  top: 60%;
+  right: 10%;
+}
+
+.bg-float-images img:nth-child(3) {
+  bottom: 10%;
+  left: 40%;
+}
+
+/* Smooth floating animation */
+@keyframes floatMove {
+  from {
+    transform: translateY(0px) scale(1);
+  }
+  to {
+    transform: translateY(-30px) scale(1.05);
+  }
+}
+
+.bn-hero {
+  position: relative;
+  z-index: 1;
+}
+
+.bn-left,
+.bn-right {
+  position: relative;
+  z-index: 2;
+}
+
+
+
+.banner-root {
+  font-family: 'Nunito Sans', sans-serif;
+  overflow: hidden;
+}
+
+/* Soft floating gradient bubbles */
+.banner-root::before,
+.banner-root::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(40px);
+  z-index: 0;
+}
+/* Left bubble */
+.banner-root::before {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 182, 193, 0.4), transparent);
+  top: -100px;
+  left: -100px;
+}
+
+/* Right bubble */
+.banner-root::after {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(238, 144, 222, 0.099), transparent);
+  bottom: -150px;
+  right: -150px;
+}
+
+
+
+
+.bg-float-images {
+  position: absolute;
+  inset: 0;
+  z-index: 1;   /* 🔥 increase */
+  pointer-events: none;
+}
+
+
+.bg-float-images img {
+  position: absolute;
+  width: 180px;
+  opacity: 2;
+  filter: blur(2px);
+  animation: floatMove 12s infinite ease-in-out alternate;
+}
+
+/* Position each image randomly */
+.bg-float-images img:nth-child(1) {
+  top: 10%;
+  left: 5%;
+}
+
+.bg-float-images img:nth-child(2) {
+  top: 60%;
+  right: 10%;
+}
+
+.bg-float-images img:nth-child(3) {
+  bottom: 10%;
+  left: 40%;
+}
+
+/* Smooth floating animation */
+@keyframes floatMove {
+  from {
+    transform: translateY(0px) scale(1);
+  }
+  to {
+    transform: translateY(-30px) scale(1.05);
+  }
+}
+
+
+
+
+
 .banner-root {
   font-family: 'Nunito Sans', sans-serif;
   background: #fff;
@@ -19,7 +156,8 @@
   padding: 60px 72px 60px 80px;
   gap: 40px;
   overflow: hidden;
-  background: #fff;
+ background: transparent;
+  z-index: 2;
 }
 
 /* Soft background blobs */
