@@ -13,7 +13,7 @@ const MOCK_PRODUCTS = [
     price: 299,
     cutprice: 499,
     createdAt: "2026-04-01",
-    images: ["https://i.ibb.co/k2pb50KC/beach-skincare-product-still-life.jpg"]
+    images: ["https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTTb178YRVcp2npaheFEOCj2gztYa2wSa3a_xvK49EJh-GEKUbA5DuLiXSf15AlElBbZm57zGcv-Ak82BPIzltRyH5J3asOfIjkFSwnSbSuyiAlGLd7laUj"]
   },
   {
     _id: "2",
@@ -21,7 +21,7 @@ const MOCK_PRODUCTS = [
     price: 349,
     cutprice: 549,
     createdAt: "2026-04-02",
-    images: ["https://i.ibb.co/k2pb50KC/beach-skincare-product-still-life.jpg"]
+    images: ["https://m.media-amazon.com/images/I/41SM0B55aOL._SY355_.jpg"]
   },
   {
     _id: "3",
@@ -29,7 +29,7 @@ const MOCK_PRODUCTS = [
     price: 399,
     cutprice: 599,
     createdAt: "2026-04-03",
-    images: ["https://i.ibb.co/k2pb50KC/beach-skincare-product-still-life.jpg"]
+    images: ["https://m.media-amazon.com/images/I/41MjAs7mMiL._SY300_SX300_QL70_FMwebp_.jpg"]
   },
   {
     _id: "4",
@@ -45,7 +45,7 @@ const MOCK_PRODUCTS = [
     price: 279,
     cutprice: 449,
     createdAt: "2026-04-05",
-    images: ["https://i.ibb.co/k2pb50KC/beach-skincare-product-still-life.jpg"]
+    images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ6_TPLlzDn-9Vx_DL_AZVVsbGflaEpoeT5Q&s"]
   }
 ];
 

@@ -208,7 +208,7 @@ const MOCK_PRODUCTS = [
     cutprice: 549,
     size: "250ml",
     createdAt: "2026-04-02",
-    images: ["https://i.ibb.co/s9hjtFdZ/product-branding-packaging.jpg"]
+    images: ["https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcTTb178YRVcp2npaheFEOCj2gztYa2wSa3a_xvK49EJh-GEKUbA5DuLiXSf15AlElBbZm57zGcv-Ak82BPIzltRyH5J3asOfIjkFSwnSbSuyiAlGLd7laUj"]
   },
   {
     _id: "3",
@@ -217,7 +217,7 @@ const MOCK_PRODUCTS = [
     cutprice: 599,
     size: "300ml",
     createdAt: "2026-04-03",
-    images: ["https://i.ibb.co/s9hjtFdZ/product-branding-packaging.jpg"]
+    images: ["https://m.media-amazon.com/images/I/41f601rV73L._SY300_SX300_QL70_FMwebp_.jpg"]
   },
   {
     _id: "4",
@@ -226,7 +226,7 @@ const MOCK_PRODUCTS = [
     cutprice: 699,
     size: "250ml",
     createdAt: "2026-04-04",
-    images: ["https://i.ibb.co/s9hjtFdZ/product-branding-packaging.jpg"]
+    images: ["https://m.media-amazon.com/images/I/41SM0B55aOL._SY355_.jpg"]
   },
   {
     _id: "5",
@@ -235,7 +235,7 @@ const MOCK_PRODUCTS = [
     cutprice: 449,
     size: "200ml",
     createdAt: "2026-04-05",
-    images: ["https://i.ibb.co/s9hjtFdZ/product-branding-packaging.jpg"]
+    images: ["https://www.vedhascents.com/cdn/shop/files/ChatGPT_Image_Jul_1_2025_09_06_45_PM.png?v=1751384249&width=713"]
   }
 ];
 

@@ -13,7 +13,7 @@ const MOCK_PRODUCTS = [
     price: 799,
     cutprice: 1199,
     createdAt: "2026-04-01",
-    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
+    images: ["https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQBzy1Q9TxJ7et4ksLNXNfcVdfAvXEciTeMU0R4WVEDghPAbcaV4EMpVN7DtjkKzcahxx9SzNzJmGxsmO_caspLP98ziZ70Sc8k7lFg2Ze68Pw5k9mH7Czyfg"]
   },
   {
     _id: "p2",
@@ -21,7 +21,7 @@ const MOCK_PRODUCTS = [
     price: 899,
     cutprice: 1399,
     createdAt: "2026-04-02",
-    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
+    images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR60zUZD_MLN22QG_vlfH1DpUWhPIm4sqKbOQ&s"]
   },
   {
     _id: "p3",
@@ -37,7 +37,7 @@ const MOCK_PRODUCTS = [
     price: 999,
     cutprice: 1499,
     createdAt: "2026-04-04",
-    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
+    images: ["https://www.vilvahstore.com/cdn/shop/files/Firstcard_1.jpg?v=1769172467&width=700"]
   },
   {
     _id: "p5",
@@ -53,8 +53,7 @@ const MOCK_PRODUCTS = [
     price: 749,
     cutprice: 1099,
     createdAt: "2026-04-06",
-    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
-  }
+ images: ["https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQBzy1Q9TxJ7et4ksLNXNfcVdfAvXEciTeMU0R4WVEDghPAbcaV4EMpVN7DtjkKzcahxx9SzNzJmGxsmO_caspLP98ziZ70Sc8k7lFg2Ze68Pw5k9mH7Czyfg"]  }
 ];
 
 const BADGES = ["BEST SELLER", "TRENDING", "NEW ARRIVAL", "HOT PICK", "TOP RATED"];
