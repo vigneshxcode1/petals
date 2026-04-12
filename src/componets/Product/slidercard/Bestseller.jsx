@@ -154,6 +154,9 @@
 // export default Trendingshirt;
 
 
+
+
+
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -187,12 +190,62 @@ const StarRating = ({ rating = 4.5, count = 0 }) => {
   );
 };
 
+
+const MOCK_PRODUCTS = [
+  {
+    _id: "1",
+    name: "Herbal Anti-Hairfall Shampoo",
+    price: 299,
+    cutprice: 499,
+    size: "200ml",
+    createdAt: "2026-04-01",
+    images: ["https://i.ibb.co/s9hjtFdZ/product-branding-packaging.jpg"]
+  },
+  {
+    _id: "2",
+    name: "Aloe Vera Hydrating Shampoo",
+    price: 349,
+    cutprice: 549,
+    size: "250ml",
+    createdAt: "2026-04-02",
+    images: ["https://i.ibb.co/s9hjtFdZ/product-branding-packaging.jpg"]
+  },
+  {
+    _id: "3",
+    name: "Onion Hair Growth Shampoo",
+    price: 399,
+    cutprice: 599,
+    size: "300ml",
+    createdAt: "2026-04-03",
+    images: ["https://i.ibb.co/s9hjtFdZ/product-branding-packaging.jpg"]
+  },
+  {
+    _id: "4",
+    name: "Keratin Smooth Repair Shampoo",
+    price: 459,
+    cutprice: 699,
+    size: "250ml",
+    createdAt: "2026-04-04",
+    images: ["https://i.ibb.co/s9hjtFdZ/product-branding-packaging.jpg"]
+  },
+  {
+    _id: "5",
+    name: "Tea Tree Dandruff Control Shampoo",
+    price: 279,
+    cutprice: 449,
+    size: "200ml",
+    createdAt: "2026-04-05",
+    images: ["https://i.ibb.co/s9hjtFdZ/product-branding-packaging.jpg"]
+  }
+];
+
+
 const Trendingshirt = () => {
   const [products, setProducts] = useState([]);
-  const [loading, setLoading]   = useState(true);
-  const [error, setError]       = useState(null);
-  const navigate                = useNavigate();
-  const trackRef                = useRef(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const trackRef = useRef(null);
 
   /* ── Drag-to-scroll ── */
   useEffect(() => {
@@ -200,10 +253,10 @@ const Trendingshirt = () => {
     if (!el) return;
     let isDown = false, startX, scrollLeft;
 
-    const down  = (e) => { isDown = true; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; el.style.cursor = "grabbing"; };
-    const leave = ()  => { isDown = false; el.style.cursor = "grab"; };
-    const up    = ()  => { isDown = false; el.style.cursor = "grab"; };
-    const move  = (e) => {
+    const down = (e) => { isDown = true; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; el.style.cursor = "grabbing"; };
+    const leave = () => { isDown = false; el.style.cursor = "grab"; };
+    const up = () => { isDown = false; el.style.cursor = "grab"; };
+    const move = (e) => {
       if (!isDown) return;
       e.preventDefault();
       el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX);
@@ -222,28 +275,37 @@ const Trendingshirt = () => {
   }, [products]);
 
   /* ── Fetch products ── */
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     try {
+  //       const cached = localStorage.getItem("Shampoo");
+  //       if (cached) {
+  //         setProducts(JSON.parse(cached));
+  //         setLoading(false);
+  //         return;
+  //       }
+  //       const res    = await axios.get(`${BASE_URL}/api/v1/products?category=Shampoo`);
+  //       const sorted = res.data.product.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  //       const first15 = sorted.slice(0, 15);
+  //       localStorage.setItem("Shampoo", JSON.stringify(first15));
+  //       setProducts(first15);
+  //     } catch (err) {
+  //       console.error("Error fetching products:", err);
+  //       setError("Unable to load products. Please check your connection.");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchProducts();
+  // }, []);
+
+
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const cached = localStorage.getItem("Shampoo");
-        if (cached) {
-          setProducts(JSON.parse(cached));
-          setLoading(false);
-          return;
-        }
-        const res    = await axios.get(`${BASE_URL}/api/v1/products?category=Shampoo`);
-        const sorted = res.data.product.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        const first15 = sorted.slice(0, 15);
-        localStorage.setItem("Shampoo", JSON.stringify(first15));
-        setProducts(first15);
-      } catch (err) {
-        console.error("Error fetching products:", err);
-        setError("Unable to load products. Please check your connection.");
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchProducts();
+    const sorted = MOCK_PRODUCTS.sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+    setProducts(sorted);
+    setLoading(false);
   }, []);
 
   if (loading) return (
@@ -285,14 +347,14 @@ const Trendingshirt = () => {
             const badgeClass = BADGE_CLASSES[idx % BADGE_CLASSES.length];
 
             // Derive a fake-but-consistent discount % from cutprice / price
-            const mrp      = Number(product.cutprice) || 0;
-            const price    = Number(product.price)    || 0;
+            const mrp = Number(product.cutprice) || 0;
+            const price = Number(product.price) || 0;
             const discount = mrp > price && mrp > 0
               ? Math.round(((mrp - price) / mrp) * 100)
               : 0;
 
             // Fake rating seeded from product id (consistent per product)
-            const seed   = product._id?.charCodeAt(product._id.length - 1) ?? 50;
+            const seed = product._id?.charCodeAt(product._id.length - 1) ?? 50;
             const rating = 4 + (seed % 10) / 10;   // 4.0 – 4.9
             const reviews = 200 + (seed * 7) % 1400;
 
@@ -340,7 +402,7 @@ const Trendingshirt = () => {
                       <span className="ts-size-chip">
                         {product.size}
                         <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                          <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round"/>
+                          <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
                         </svg>
                       </span>
                     </div>

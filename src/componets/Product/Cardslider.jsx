@@ -5,6 +5,58 @@ import "./CardSlider.css";
 
 const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
+
+const MOCK_PRODUCTS = [
+  {
+    _id: "p1",
+    name: "Classic White Oversized T-Shirt",
+    price: 799,
+    cutprice: 1199,
+    createdAt: "2026-04-01",
+    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
+  },
+  {
+    _id: "p2",
+    name: "Black Streetwear Graphic Tee",
+    price: 899,
+    cutprice: 1399,
+    createdAt: "2026-04-02",
+    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
+  },
+  {
+    _id: "p3",
+    name: "Minimal Beige Cotton T-Shirt",
+    price: 699,
+    cutprice: 999,
+    createdAt: "2026-04-03",
+    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
+  },
+  {
+    _id: "p4",
+    name: "Vintage Washed Black Tee",
+    price: 999,
+    cutprice: 1499,
+    createdAt: "2026-04-04",
+    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
+  },
+  {
+    _id: "p5",
+    name: "Urban Printed Drop-Shoulder Tee",
+    price: 849,
+    cutprice: 1299,
+    createdAt: "2026-04-05",
+    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
+  },
+  {
+    _id: "p6",
+    name: "Pastel Blue Relaxed Fit T-Shirt",
+    price: 749,
+    cutprice: 1099,
+    createdAt: "2026-04-06",
+    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
+  }
+];
+
 const BADGES = ["BEST SELLER", "TRENDING", "NEW ARRIVAL", "HOT PICK", "TOP RATED"];
 
 const StarRating = ({ rating = 4.5, count = 0 }) => {
@@ -58,6 +110,8 @@ const ProductCard = ({ product, index }) => {
     if (el) observer.observe(el);
     return () => observer.disconnect();
   }, [index]);
+
+
 
   const discount =
     product.cutprice && product.price
@@ -125,21 +179,35 @@ const Trendingshirt = () => {
 
   const tabs = ["All", "Hair", "Skin", "Body"];
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const res = await axios.get(`${BASE_URL}/api/v1/products?category=Shampoo`);
+  //       const sorted = res.data.product.sort(
+  //         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+  //       );
+  //       setProducts(sorted.slice(0, 16));
+  //     } catch (err) {
+  //       console.error(err);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
+
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await axios.get(`${BASE_URL}/api/v1/products?category=Shampoo`);
-        const sorted = res.data.product.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
-        setProducts(sorted.slice(0, 16));
-      } catch (err) {
-        console.error(err);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
+    setLoading(true);
+
+    const sorted = [...MOCK_PRODUCTS].sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+
+    setTimeout(() => {
+      setProducts(sorted);
+      setLoading(false); // ✅ IMPORTANT
+    }, 800);
   }, []);
 
   return (
@@ -148,15 +216,15 @@ const Trendingshirt = () => {
         <h2 className="section-title">New Arrivals</h2>
         <p className="section-sub">Latest natural products, curated for you</p>
 
-       
+
       </div>
 
       <div className="product-grid">
         {loading
           ? Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)
           : products.map((p, i) => (
-              <ProductCard key={p._id} product={p} index={i} />
-            ))}
+            <ProductCard key={p._id} product={p} index={i} />
+          ))}
       </div>
     </section>
   );
