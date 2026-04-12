@@ -16,7 +16,7 @@ import bestImg from "../../../assets/serum-bottle-flower-arrangement.jpg";
 
 const images = [
   heroImg, heroImg2, heroImg3, heroImg4,
-  heroImg5, heroImg6, heroImg7, heroImg8,
+  heroImg5,
 ];
  
 const TRUST_PILLS = [
