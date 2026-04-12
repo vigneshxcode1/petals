@@ -8,7 +8,9 @@ import heroImg from "../../../assets/hero.jpeg";
 import heroImg2 from "../../../assets/hero2.jpeg";
 import heroImg3 from "../../../assets/hero3.jpeg";
 import heroImg4 from "../../../assets/hero4.jpeg";
-import heroImg5 from "../../../assets/hero.jpeg";
+import heroImg5 from "../../../assets/hero5.jpeg";
+import heroImg6 from "../../../assets/hero6.jpeg";
+import heroImg7  from "../../../assets/hero7.jpeg";
 
 import hairImg from "../../../assets/product-branding-packaging.jpg";
 import skinImg from "../../../assets/beach-skincare-product-still-life.jpg";
@@ -16,7 +18,7 @@ import bestImg from "../../../assets/serum-bottle-flower-arrangement.jpg";
 
 const images = [
   heroImg, heroImg2, heroImg3, heroImg4,
-  heroImg5,
+  heroImg5,heroImg6,heroImg7
 ];
  
 const TRUST_PILLS = [
