@@ -103,7 +103,7 @@
 .bg-float-images img {
   position: absolute;
   width: 180px;
-  opacity: 2;
+  opacity: 0.08;
   filter: blur(2px);
   animation: floatMove 12s infinite ease-in-out alternate;
 }
