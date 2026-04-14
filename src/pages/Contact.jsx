@@ -82,7 +82,7 @@ const Contact = () => {
           <Link
 
             className="contact"
-            to={"https://www.instagram.com/?hl=en"}
+            to={"https://www.instagram.com/muthus_petals_official?utm_source=qr&igsh=dmt1OWJpcWFmcHlp"}
           >
             Instagram{" "}
             <svg
