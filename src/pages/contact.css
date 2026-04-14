@@ -1,39 +1,52 @@
-/* IMPORT GOOGLE FONT */
+/* GOOGLE FONT */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-.contact-container {
-  display: flex;
-  justify-content: center;
-  padding: 40px 20px;
-  font-family:'Times New Roman', Times, serif;
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+/* FULL PAGE LAYOUT */
+.contact-container {
+  min-height: 100vh; /* FULL SCREEN HEIGHT */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* CENTER VERTICALLY */
+  padding: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  background: #ffffff53;
+}
+
+/* MAIN WRAPPER */
 .main-containers {
   width: 100%;
   max-width: 900px;
   text-align: center;
-
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
 }
 
 /* TITLE */
-.contact-title {
+.main-containers h1 {
   font-size: 2.5rem;
   font-weight: 700;
-  letter-spacing: 1px;
   margin-bottom: 10px;
   color: #111;
 }
 
 /* SUBTITLE */
-.contact-subtitle {
+.main-containers h5 {
   font-size: 1.1rem;
   font-weight: 400;
   color: #666;
   margin-bottom: 30px;
-  line-height: 1.6;
+}
+
+/* GRID */
+.main-containers {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
 }
 
 /* CONTACT CARD */
@@ -41,46 +54,45 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 20px;
-  border-radius: 12px;
+  padding: 16px 20px;
+  border-radius: 14px;
   background: #c591c792;
   color: #000;
   text-decoration: none;
   font-size: 17px;
   font-weight: 500;
-  transition: 0.3s ease;
+  transition: all 0.3s ease;
 }
 
-/* HOVER EFFECT */
+/* HOVER */
 .contact:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
   background: #c591c7;
 }
 
-/* ICON SIZE */
+/* ICON */
 .contact svg {
-  width: 38px;
-  height: 38px;
+  width: 36px;
+  height: 36px;
 }
 
-/* RESPONSIVE */
+/* 📱 MOBILE */
 @media (max-width: 768px) {
   .main-containers {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* SINGLE COLUMN */
   }
 
-  .contact-title {
-    font-size: 1.9rem;
-    font-weight: 600;
+  .main-containers h1 {
+    font-size: 2rem;
   }
 
-  .contact-subtitle {
+  .main-containers h5 {
     font-size: 0.95rem;
   }
 
   .contact {
     font-size: 15px;
-    padding: 12px;
+    padding: 14px;
   }
 
   .contact svg {
@@ -89,104 +101,13 @@
   }
 }
 
-.contact-container {
-  display: flex;
-  justify-content: center;
-  padding: 40px 20px;
-}
-
-.main-containers {
-  width: 100%;
-  max-width: 900px;
-  text-align: center;
-}
-
-.main-containers h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.main-containers h5 {
-  font-size: 1rem;
-  margin-bottom: 30px;
-  color: gray;
-}
-
-/* GRID LAYOUT */
-.main-containers {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-}
-
-/* CONTACT CARD */
-.contact {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px 20px;
-  border-radius: 12px;
-  background: #c591c792;
-  color: rgb(0, 0, 0);
-  text-decoration: none;
-  font-size: 18px;
-  transition: 0.3s;
-}
-
-
-/* ICON SIZE */
-.contact svg {
-  width: 40px;
-  height: 40px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
+/* 💻 LARGE SCREENS */
+@media (min-width: 1200px) {
   .main-containers {
-    grid-template-columns: 1fr;
-  }
-
-  .main-containers h1 {
-    font-size: 2rem;
+    max-width: 1100px;
   }
 
   .contact {
-    font-size: 16px;
-    padding: 12px;
-  }
-
-  .contact svg {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-/* TITLE */
-.contact-title {
-  font-size: 2.5rem;
-  font-weight: 700; /* bold but clean */
-  letter-spacing: 0.5px;
-  margin-bottom: 10px;
-  color: #111;
-}
-
-/* SUBTITLE */
-.contact-subtitle {
-  font-size: 1.1rem;
-  font-weight: 400;
-  color: #666;
-  margin-bottom: 30px;
-  line-height: 1.5;
-}
-
-/* MOBILE RESPONSIVE */
-@media (max-width: 768px) {
-  .contact-title {
-    font-size: 1.8rem;
-    font-weight: 600;
-  }
-
-  .contact-subtitle {
-    font-size: 0.95rem;
+    font-size: 18px;
   }
 }

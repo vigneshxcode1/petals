@@ -9,8 +9,9 @@ const Contact = () => {
       <Navbar />
       <div className="contact-container">
         <div className="main-containers">
+
           <h1>Contact Links</h1>
-          <h5>ANY QUERYS CHECK OUT BELOW LINKS</h5>
+          <h5>Any queries? Check out the links below</h5>
           <Link className="contact" to={"https://wa.me/6381181527"}>
             WhatsApp
             <svg
