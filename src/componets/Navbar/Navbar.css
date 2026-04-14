@@ -7,10 +7,10 @@
 
 /* ── Tokens ── */
 :root {
-  --c-bg:       #f6b0fb;
+  --c-bg:       #f9e4f880;
   --c-surface:  #faf8f5;
   --c-border:   rgba(0,0,0,0.08);
-  --c-text:     #000000;
+  --c-text:    #822aae;
   --c-muted:    #000000;
   --c-accent:   #9b4dca;
   --c-accent-h: #7b2fab;
