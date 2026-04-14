@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./product.css";
+import "./contact.css"
 import Navbar from "../componets/Navbar/Navbar";
 const Contact = () => {
   return (
@@ -13,7 +14,7 @@ const Contact = () => {
           <Link className="contact" to={"https://wa.me/812371300"}>
             WhatsApp
             <svg
-            id="icon"
+              id="icon"
               className="icon-whatsapps"
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
@@ -46,8 +47,8 @@ const Contact = () => {
               ></path>
             </svg>
           </Link>
-
-          {/* <Link className="contact" to={"https://telegram.me/Deepakspax"}>
+          {/* 
+          <Link className="contact" to={"https://telegram.me/Deepakspax"}>
             Telegram
             <svg
               id="icon"
@@ -79,7 +80,7 @@ const Contact = () => {
           </Link> */}
 
           <Link
-          
+
             className="contact"
             to={"https://www.instagram.com/?hl=en"}
           >
@@ -185,11 +186,11 @@ const Contact = () => {
               </g>
             </svg>
           </Link>
-          {/* <Link className="contact" to={""}>
+          <Link className="contact" to={"https://www.facebook.com/profile.php?id=61579168031168"}>
             Facebook
             <svg
               id="icon"
-            className="icon-facebook"
+              className="icon-facebook"
               xmlns="http://www.w3.org/2000/svg"
               x="0px"
               y="0px"
@@ -206,9 +207,33 @@ const Contact = () => {
                 d="M21.2,20.7V24h-4.7v5h4.7v13.7C22.1,42.9,23,43,24,43c0.9,0,1.7-0.1,2.6-0.2V29h4.9l0.8-5h-5.7v-2.7	c0-2.1,0.7-3.9,2.6-3.9h3.1V13c-0.5-0.1-1.7-0.2-3.9-0.2C23.8,12.8,21.2,15.2,21.2,20.7z"
               ></path>
             </svg>
-          </Link> */}
+          </Link>
 
-          
+
+          <a
+            className="contact"
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            YouTube
+            <svg
+              className="icon-youtube"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 48 48"
+              width="100"
+              height="100"
+            >
+              <path
+                fill="#FF0000"
+                d="M43.2,14.4c-0.5-1.9-2-3.4-3.9-3.9C35.6,9.6,24,9.6,24,9.6s-11.6,0-15.3,0.9c-1.9,0.5-3.4,2-3.9,3.9C4,18.1,4,24,4,24
+      s0,5.9,0.8,9.6c0.5,1.9,2,3.4,3.9,3.9C12.4,38.4,24,38.4,24,38.4s11.6,0,15.3-0.9c1.9-0.5,3.4-2,3.9-3.9C44,29.9,44,24,44,24
+      S44,18.1,43.2,14.4z"
+              />
+              <polygon fill="#fff" points="20,17 32,24 20,31" />
+            </svg>
+          </a>
+
         </div>
       </div>
     </>

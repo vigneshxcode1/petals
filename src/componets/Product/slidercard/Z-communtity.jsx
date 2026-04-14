@@ -186,7 +186,7 @@ const Trendingshirt = () => {
   return (
     <section className="zculture">
       <div className="zculture__header">
-        <h2 className="zculture__title">New Arrivals</h2>
+        <h2 className="zculture__title">Best Seller</h2>
         <p className="zculture__subtitle">Fresh styles, just dropped</p>
       </div>
 
