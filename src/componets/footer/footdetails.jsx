@@ -1,6 +1,8 @@
 import React from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
+import logo from "../images/logo.jpg"
+
 
 const Footer = () => {
   return (
@@ -9,7 +11,15 @@ const Footer = () => {
 
         {/* Brand */}
         <div className="footer-col">
-          <h2 className="logo">MUTHU'S PETALS</h2>
+          <div className="footer-logo">
+            <img
+              src={logo}
+              alt="Muthu's Petals Logo"
+              className="footer-logo-img"
+            />
+            <h2 className="footer-logo-text">MUTHU'S PETALS</h2>
+          </div>
+
           <p className="tagline">
             Natural care for your hair & skin with premium quality products.
           </p>
@@ -35,12 +45,12 @@ const Footer = () => {
         </div>
 
 
- <div className="footer-col">
-          <h3><a href="">social media</a> </h3>
+         <div className="footer-col">
+          <h3>social media</h3>
           <p> <a href="">Instagram</a></p>
           <p> <a href="">facebook</a></p>
           <p> <a href="">Youtube</a></p>
-         
+
         </div>
 
 

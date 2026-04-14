@@ -20,11 +20,7 @@ const Home = () => {
     <>
       <Navbar />
 
-
-      {/* 
-      <Corosol /> */}
-      {/* <img src={titleimg} className="titleimg"alt="Logo" /> */}
-
+      
       <BannerPage />
 
         <Bestseller />

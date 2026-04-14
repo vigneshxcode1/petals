@@ -65,13 +65,6 @@ export default function Banner() {
       {/* ═══════════ HERO ═══════════ */}
       <section className="bn-hero">
 
-        <div className="bn-bg-illustration">
-          <img src={bannerback} className="bg-img bg-img-1" alt="" />
-          <img src={bannerback2} className="bg-img bg-img-2" alt="" />
-          <img src={bannerback3} className="bg-img bg-img-3" alt="" />
-          <img src={bannerback4} className="bg-img bg-img-4" alt="" />
-        </div>
-
 
         {/* decorative blobs */}
         <span className="bn-blob bn-blob--left" aria-hidden="true" />

@@ -1,7 +1,30 @@
 /* Footer */
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.footer-logo-img {
+  width: 58px;
+  height: 58px;
+  object-fit: contain;
+}
+
+.footer-logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  margin: 0;
+}
+
+
+
 .footer {
   background: #1f1f1f;
-  color: #fff;
+  color: #eb7aff;
   padding: 50px 20px 20px;
   font-family: Arial, sans-serif;
 }
