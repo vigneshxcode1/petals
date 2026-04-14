@@ -609,8 +609,8 @@
 /* ── Small phone (≤ 480px) ── */
 @media (max-width: 480px) {
   :root { --h-nav: 56px; --h-ticker: 28px; }
-  .navbar-inner { padding: 0 12px; }
-  .logo-text    { font-size: 20px;font-weight: 800; }
+  .navbar-inner { padding: 0 0px; }
+  .logo-text    { font-size: 22px;font-weight: 800; }
   .logo-icon    { width: 16px; height: 16px; }
   .ticker       { font-size: 9px; letter-spacing: 1.4px; }
   .ticker-item  { padding: 0 24px; }
