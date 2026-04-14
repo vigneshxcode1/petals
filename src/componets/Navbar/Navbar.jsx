@@ -4,11 +4,12 @@ import "./Navbar.css";
 import logo from "../images/logo.jpg";
 
 const navItems = [
+  { label: "Home", href: "/" },
+  { label: "Hair Care", href: "#" },
+  { label: "Skin Care", href: "#" },
   { label: "New Arrivals", href: "/products" },
-  { label: "Hair Care",    href: "#" },
-  { label: "Skin Care",    href: "#" },
-  { label: "Bath & Body",  href: "#" },
-  { label: "Our Story",    href: "/about" },
+  { label: "Contact", href: "/footer" },
+  { label: "Our Story", href: "/about" },
 ];
 
 const TICKER_MSGS = [
@@ -25,7 +26,7 @@ const FloralIcon = () => (
     <circle cx="28" cy="20" r="5" fill="#e8a0f0" opacity="0.75" />
     <circle cx="20" cy="28" r="5" fill="#c084d4" opacity="0.85" />
     <circle cx="12" cy="20" r="5" fill="#e8a0f0" opacity="0.75" />
-    <circle cx="20" cy="20" r="4" fill="#fff"    opacity="0.9"  />
+    <circle cx="20" cy="20" r="4" fill="#fff" opacity="0.9" />
     <circle cx="20" cy="20" r="2" fill="#c084d4" />
   </svg>
 );
@@ -135,8 +136,8 @@ const IconBag = () => (
    MAIN NAVBAR
 ═══════════════════════════════ */
 export default function Navbar({ cartCount = 0 }) {
-  const [menuOpen,   setMenuOpen]   = useState(false);
-  const [scrolled,   setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const drawerRef = useRef(null);
   const searchRef = useRef(null);
@@ -235,7 +236,7 @@ export default function Navbar({ cartCount = 0 }) {
           {/* RIGHT — Icons */}
           <div className="navbar-right">
             {/* Search */}
-          
+
 
             <Link to="/profile" className="icon-btn" aria-label="My account">
               <IconAccount />

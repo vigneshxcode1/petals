@@ -36,6 +36,7 @@ import Profile from "./Login/Profile.jsx";
 import Gallery from "./pages/gallery/Gallery.jsx";
 import Creategallery from './pages/gallery/Creategallery.jsx'
 import Sizechart from "./pages/Sizechart.jsx";
+import Footer from "./componets/footer/footdetails.jsx";
 
 function App() {
   return (
@@ -59,7 +60,8 @@ function App() {
 
         {/*         <Route path="/bike" element={<Bike />} /> */}
 
-      
+        
+        <Route path="/footer" element={<Footer/>}></Route>
         <Route path="/contact" element={<Contact />}></Route>
         <Route path="/ordershipping" element={<OrderPage />}></Route>
         <Route path="/products/:id" element={<ProductDetail />} />

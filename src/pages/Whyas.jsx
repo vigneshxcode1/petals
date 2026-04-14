@@ -26,7 +26,7 @@ const cards = [
   },
   {
     img: img4,
-    title: "100% Organic",
+    title: "Natural inspired formula",
     desc: "Authentic natural ingredients",
     delay: "0.45s",
   },
