@@ -331,7 +331,7 @@ const Trendingshirt = () => {
       {/* ── Header ── */}
       <div className="ts-header-block">
         <div>
-          <p className="ts-eyebrow">Best Sellers</p>
+          
           <h2 className="ts-title">
             Natural <em>Shampoo</em> <em>Collection</em>
           </h2>

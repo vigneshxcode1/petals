@@ -22,7 +22,7 @@
 .zculture {
   background-color: var(--zc-bg);
   padding: 64px 24px 80px;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   min-height: 100vh;
 }
 
@@ -30,9 +30,10 @@
 .zculture__header {
   text-align: center;
   margin-bottom: 48px;
+
 }
 .zculture__title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 700;
   color: var(--zc-text);

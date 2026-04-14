@@ -7,7 +7,8 @@
   width: 100%; /* Full width of the parent */
   height: 400px; /* Increase height as needed */
   overflow: hidden; /* Hide overflow for clean look */
-  position: relative; /* For any absolute positioning if needed */
+  position: relative;
+  font-family: 'Times New Roman', Times, serif; /* For any absolute positioning if needed */
 
 }
 
@@ -93,6 +94,7 @@
   background-color: #a852ae;
   color: white;
   border-radius: 10px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 
@@ -158,6 +160,7 @@
   animation: head2 linear;
   animation-timeline: view();
   animation-range: entry 0% cover 40%;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .navigation{

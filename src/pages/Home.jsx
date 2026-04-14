@@ -41,7 +41,7 @@ const Home = () => {
       <Testamonial />
 
       <br />
-      <Gallery />
+      {/* <Gallery /> */}
 
       <Footer />
     </>
