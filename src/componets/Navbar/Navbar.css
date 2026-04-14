@@ -7,15 +7,15 @@
 
 /* ── Tokens ── */
 :root {
-  --c-bg:       #ffffff;
+  --c-bg:       #f6b0fb;
   --c-surface:  #faf8f5;
   --c-border:   rgba(0,0,0,0.08);
-  --c-text:     #1a1713;
-  --c-muted:    #7a756b;
+  --c-text:     #000000;
+  --c-muted:    #000000;
   --c-accent:   #9b4dca;
   --c-accent-h: #7b2fab;
   --c-petal:    #c084d4;
-  --c-cream:    #f5efe8;
+  --c-cream:    #f5e8f0;
   --h-ticker:   34px;
   --h-nav:      68px;
   --radius-drop:12px;
@@ -166,6 +166,7 @@
 .nav-links {
   display: flex;
   justify-content: center;
+  font-weight: 700;
 }
 
 .nav-links ul {
@@ -174,6 +175,7 @@
   display: flex;
   align-items: center;
   gap: 2px;
+ 
 }
 
 .nav-item { position: relative; }
@@ -181,7 +183,7 @@
 .nav-a {
   font-family: 'DM Sans', sans-serif;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 800;
   letter-spacing: 0.6px;
   color: var(--c-text);
   text-decoration: none;
@@ -589,7 +591,7 @@
   .nav-links   { display: none; }
   .hamburger   { display: flex; }
   .logo-tagline { display: none; }
-  .logo-text    { font-size: 20px; }
+  .logo-text    { font-size: 20px;}
 }
 
 /* ── Mobile (≤ 768px) ── */
