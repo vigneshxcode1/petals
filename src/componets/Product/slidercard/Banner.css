@@ -57,7 +57,7 @@
 }
 .bn-eyebrow::before {
   content: '';
-  width: 22px; height: 1.5px;
+
   background: #822aae;
   flex-shrink: 0;
 }
