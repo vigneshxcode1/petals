@@ -241,7 +241,7 @@ export default function Navbar({ cartCount = 0 }) {
                 aria-label="Search"
                 onClick={() => setSearchOpen((v) => !v)}
               >
-                <IconSearch />
+                {/* <IconSearch /> */}
               </button>
               <div
                 className={`search-popover ${searchOpen ? "search-popover--open" : ""}`}
