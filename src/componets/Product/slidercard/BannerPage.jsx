@@ -3,6 +3,12 @@ import { Link } from "react-router-dom";
 import "./Banner.css";
 import "./HeroGrid.css";
 
+import bannerback from "../../../assets/bannerback.png"
+import bannerback2 from "../../../assets/bannerback2.jpg"
+import bannerback3 from "../../../assets/bannerback3.jpg"
+import bannerback4 from "../../../assets/bannerback4.jpg"
+
+
 /* ── swap these imports for your real images ── */
 import heroImg from "../../../assets/hero3.jpeg";
 import heroImg2 from "../../../assets/hero2.jpeg";
@@ -13,9 +19,9 @@ import heroImg6 from "../../../assets/hero8.jpeg";
 import heroImg7 from "../../../assets/hero5.jpeg";
 import heroImg8 from "../../../assets/hero7.jpeg";
 
-import hairImg from "../../../assets/product-branding-packaging.jpg";
-import skinImg from "../../../assets/beach-skincare-product-still-life.jpg";
-import bestImg from "../../../assets/serum-bottle-flower-arrangement.jpg";
+import hairImg from "../../../assets/beach-skincare-product-still-life.jpeg";
+import skinImg from "../../../assets/soap-product.jpeg";
+import bestImg from "../../../assets/bannerback4.jpg";
 
 const images = [
   heroImg, heroImg2, heroImg3, heroImg4,
@@ -56,14 +62,16 @@ export default function Banner() {
   return (
     <div className="banner-root">
 
-
-      {/* <div className="bg-float-images">
-        <img src={"https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQBzy1Q9TxJ7et4ksLNXNfcVdfAvXEciTeMU0R4WVEDghPAbcaV4EMpVN7DtjkKzcahxx9SzNzJmGxsmO_caspLP98ziZ70Sc8k7lFg2Ze68Pw5k9mH7Czyfg"} alt="" />
-        <img src={"https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"} alt="" />
-        <img src={"https://www.vilvahstore.com/cdn/shop/files/Firstcard_1.jpg?v=1769172467&width=700"} alt="" />
-      </div> */}
       {/* ═══════════ HERO ═══════════ */}
       <section className="bn-hero">
+
+        <div className="bn-bg-illustration">
+          <img src={bannerback} className="bg-img bg-img-1" alt="" />
+          <img src={bannerback2} className="bg-img bg-img-2" alt="" />
+          <img src={bannerback3} className="bg-img bg-img-3" alt="" />
+          <img src={bannerback4} className="bg-img bg-img-4" alt="" />
+        </div>
+
 
         {/* decorative blobs */}
         <span className="bn-blob bn-blob--left" aria-hidden="true" />
