@@ -8,7 +8,7 @@ const navItems = [
   { label: "Hair Care", href: "#" },
   { label: "Skin Care", href: "#" },
   { label: "New Arrivals", href: "/products" },
-  { label: "Contact", href: "/footer" },
+  { label: "Contact", href: "/contact" },
   { label: "Our Story", href: "/about" },
 ];
 
