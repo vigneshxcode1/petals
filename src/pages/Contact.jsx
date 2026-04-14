@@ -10,7 +10,7 @@ const Contact = () => {
         <div className="main-containers">
           <h1>Contact Links</h1>
           <h5>ANY QUERYS CHECK OUT BELOW LINKS</h5>
-          <Link className="contact" to={"https://wa.me/7010434690"}>
+          <Link className="contact" to={"https://wa.me/812371300"}>
             WhatsApp
             <svg
             id="icon"
@@ -81,7 +81,7 @@ const Contact = () => {
           <Link
           
             className="contact"
-            to={"https://www.instagram.com/zculture__?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="}
+            to={"https://www.instagram.com/?hl=en"}
           >
             Instagram{" "}
             <svg
