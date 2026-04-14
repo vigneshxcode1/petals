@@ -1,4 +1,7 @@
-
+.banner-root{
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: 500;
+}
 .bn-hero {
   position: relative;
   display: grid;
@@ -93,7 +96,7 @@
   padding: 13px 32px;
   background: #822aae;
   color: #fff;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
@@ -115,7 +118,7 @@
   padding: 13px 28px;
   background: transparent;
   color: #2e2a1e;
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.5px;
