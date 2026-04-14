@@ -72,7 +72,7 @@ export default function Banner() {
 
         {/* LEFT */}
         <div className="bn-left">
-
+          <p className="bn-eyebrow"> Botanical Care For &amp;  Morden Living</p>
 
           <h1 className="bn-h1">
             Muthu's Petals.<br />
