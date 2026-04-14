@@ -235,26 +235,7 @@ export default function Navbar({ cartCount = 0 }) {
           {/* RIGHT — Icons */}
           <div className="navbar-right">
             {/* Search */}
-            <div className="search-wrap" ref={searchRef}>
-              <button
-                className="icon-btn"
-                aria-label="Search"
-                onClick={() => setSearchOpen((v) => !v)}
-              >
-                {/* <IconSearch /> */}
-              </button>
-              <div
-                className={`search-popover ${searchOpen ? "search-popover--open" : ""}`}
-              >
-                <input
-                  type="search"
-                  placeholder="Search products…"
-                  className="search-input"
-                  autoFocus={searchOpen}
-                  aria-label="Search products"
-                />
-              </div>
-            </div>
+          
 
             <Link to="/profile" className="icon-btn" aria-label="My account">
               <IconAccount />
