@@ -42,10 +42,6 @@
   transition: 0.3s;
 }
 
-.contact:hover {
-  transform: scale(1.05);
-  background: #222;
-}
 
 /* ICON SIZE */
 .contact svg {
