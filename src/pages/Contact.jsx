@@ -11,7 +11,7 @@ const Contact = () => {
         <div className="main-containers">
           <h1>Contact Links</h1>
           <h5>ANY QUERYS CHECK OUT BELOW LINKS</h5>
-          <Link className="contact" to={"https://wa.me/812371300"}>
+          <Link className="contact" to={"https://wa.me/6381181527"}>
             WhatsApp
             <svg
               id="icon"

@@ -1,3 +1,94 @@
+/* IMPORT GOOGLE FONT */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.contact-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family:'Times New Roman', Times, serif;
+}
+
+.main-containers {
+  width: 100%;
+  max-width: 900px;
+  text-align: center;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* TITLE */
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+/* SUBTITLE */
+.contact-subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+/* CONTACT CARD */
+.contact {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+  border-radius: 12px;
+  background: #c591c792;
+  color: #000;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.contact:hover {
+  transform: translateY(-3px);
+  background: #c591c7;
+}
+
+/* ICON SIZE */
+.contact svg {
+  width: 38px;
+  height: 38px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .main-containers {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-title {
+    font-size: 1.9rem;
+    font-weight: 600;
+  }
+
+  .contact-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .contact {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  .contact svg {
+    width: 28px;
+    height: 28px;
+  }
+}
+
 .contact-container {
   display: flex;
   justify-content: center;
