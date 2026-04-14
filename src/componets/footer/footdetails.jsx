@@ -45,11 +45,11 @@ const Footer = () => {
         </div>
 
 
-         <div className="footer-col">
+        <div className="footer-col">
           <h3>social media</h3>
-          <p> <a href="">Instagram</a></p>
-          <p> <a href="">facebook</a></p>
-          <p> <a href="">Youtube</a></p>
+          <p> <a href="https://www.instagram.com/?hl=en">Instagram</a></p>
+          <p> <a href="https://www.facebook.com/profile.php?id=61579168031168">facebook</a></p>
+          <p> <a href="https://www.youtube.com/@MuthusPetals">Youtube</a></p>
 
         </div>
 
