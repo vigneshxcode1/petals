@@ -69,3 +69,33 @@
     height: 30px;
   }
 }
+
+/* TITLE */
+.contact-title {
+  font-size: 2.5rem;
+  font-weight: 700; /* bold but clean */
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+/* SUBTITLE */
+.contact-subtitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #666;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  .contact-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+  }
+
+  .contact-subtitle {
+    font-size: 0.95rem;
+  }
+}
