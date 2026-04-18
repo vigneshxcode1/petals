@@ -263,7 +263,7 @@ const ProductDetail = () => {
               <div className="pd-section">
                 <p className="pd-section-label">Select ml</p>
                 <div className="pd-size-row">
-                  {["100", "250", "500"].map((s) => (
+                  {["200",  "500"].map((s) => (
                     <button
                       key={s}
                       className={`pd-size-btn ${selectedSize === s ? "pd-size-active" : ""}`}

@@ -122,7 +122,7 @@ const Trendingshirt = () => {
         <div>
           
           <h2 className="ts-title">
-            Natural <em>Shampoo</em> <em>Collection</em>
+            New arrival  <em>Collection</em>
           </h2>
         </div>
         <Link className="ts-see-all" to="/products">View all →</Link>
