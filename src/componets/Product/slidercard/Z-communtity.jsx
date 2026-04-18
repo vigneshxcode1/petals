@@ -82,7 +82,6 @@ const Trendingshirt = () => {
         const res    = await axios.get(`${BASE_URL}/api/v1/products`);
         const sorted = res.data.product.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         const first15 = sorted.slice(0, 15);
-        localStorage.setItem("Shampoo", JSON.stringify(first15));
         setProducts(first15);
       } catch (err) {
         console.error("Error fetching products:", err);

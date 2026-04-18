@@ -7,8 +7,7 @@ import Navbar from "../componets/Navbar/Navbar.jsx"
 import loadingimg from "../componets/images/animiloading.gif"
 
 
-const BASE_URL="http://localhost:8000"
-// const BASE_URL = "https://shafin-backend.onrender.com";
+const BASE_URL="https://petals-backensd-p9st.onrender.com"
 
 function Musicoversized() {
   const [products, setProducts] = useState([]);

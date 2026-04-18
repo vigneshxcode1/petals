@@ -6,7 +6,7 @@ import "./showproducts.css";
 
  const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
-// const BASE_URL = "http://localhost:8000";
+// const BASE_URL = "https://petals-backend-p9st.onrender.com"
 
 export const Showallproducts = () => {
   const [products, setProducts] = useState([]);

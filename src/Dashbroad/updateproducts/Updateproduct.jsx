@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
   const BASE_URL = "https://petals-backend-p9st.onrender.com";
-// const BASE_URL = "http://localhost:8000";
+// const BASE_URL = "https://petals-backend-p9st.onrender.com"
 
 const Updateproducts = () => {
   const [name, setName] = useState("");

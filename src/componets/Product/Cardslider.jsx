@@ -3,6 +3,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+
 import '../../componets/Product/slidercard/Trendingshirt.css'
 const BASE_URL = "https://petals-backend-p9st.onrender.com";
 

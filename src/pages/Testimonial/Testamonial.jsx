@@ -5,7 +5,7 @@ import axios from "axios";
 
 const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
-// const BASE_URL= "http://localhost:8000"
+// const BASE_URL= "https://petals-backend-p9st.onrender.com""
 
 const Testamonial = () => {
   const [testimonials, setTestimonials] = useState([]);

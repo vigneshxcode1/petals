@@ -77,12 +77,15 @@ const Trendingshirt = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-       
-      
+        
+        if (cached) {
+          setProducts(JSON.parse(cached));
+          setLoading(false);
+          return;
+        }
         const res    = await axios.get(`${BASE_URL}/api/v1/products?category=Shampoo`);
         const sorted = res.data.product.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         const first15 = sorted.slice(0, 15);
-        localStorage.setItem("Shampoo", JSON.stringify(first15));
         setProducts(first15);
       } catch (err) {
         console.error("Error fetching products:", err);
@@ -96,7 +99,6 @@ const Trendingshirt = () => {
 
 
   console.log(products)
-
 
   if (loading) return (
     <div className="ts-section">

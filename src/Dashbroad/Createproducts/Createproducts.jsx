@@ -7,7 +7,7 @@ import Dashbroad from "../Dashbroad";
 
   const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
-//const BASE_URL = "http://localhost:8000";
+//const BASE_URL = "https://petals-backend-p9st.onrender.com"
 
 const Createproducts = () => {
   const [name, setProductname] = useState("");
