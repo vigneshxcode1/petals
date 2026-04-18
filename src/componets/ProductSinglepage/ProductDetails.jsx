@@ -229,9 +229,9 @@ const ProductDetail = () => {
 
               <h1 className="pd-name">{product.name}</h1>
 
-              {product.color && (
+              {/* {product.color && (
                 <p className="pd-color">• {product.color}</p>
-              )}
+              )} */}
 
               {/* Prices */}
               <div className="pd-price-row">
