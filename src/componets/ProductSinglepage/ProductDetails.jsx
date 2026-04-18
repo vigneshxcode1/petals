@@ -167,8 +167,8 @@ const ProductDetail = () => {
           <div className="pd-grid">
             {/* ── Gallery ── */}
             <div className="pd-gallery">
-              {discount && <span className="pd-badge pd-badge-sale">{discount}% OFF</span>}
-              <span className="pd-badge pd-badge-new">Bestseller</span>
+              {/* {discount && <span className="pd-badge pd-badge-sale">{discount}% OFF</span>}
+              <span className="pd-badge pd-badge-new">Bestseller</span> */}
 
               <button className="pd-nav pd-nav-prev" onClick={prevSlide} aria-label="Previous">
                 &#8249;
