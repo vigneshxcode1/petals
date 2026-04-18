@@ -185,7 +185,7 @@ const Trendingshirt = () => {
                   </div>
 
                   {/* Volume chip */}
-                  {product.size && (
+                  {/* {product.size && (
                     <div className="ts-size-row">
                       <span className="ts-size-chip">
                         {product.size}
@@ -194,7 +194,7 @@ const Trendingshirt = () => {
                         </svg>
                       </span>
                     </div>
-                  )}
+                  )} */}
                 </div>
               </div>
             );
