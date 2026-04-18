@@ -78,12 +78,8 @@ const Trendingshirt = () => {
     const fetchProducts = async () => {
       try {
         
-        if (cached) {
-          setProducts(JSON.parse(cached));
-          setLoading(false);
-          return;
-        }
-        const res    = await axios.get(`${BASE_URL}/api/v1/products?category=Shampoo`);
+       
+        const res    = await axios.get(`${BASE_URL}/api/v1/products`);
         const sorted = res.data.product.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         const first15 = sorted.slice(0, 15);
         setProducts(first15);
