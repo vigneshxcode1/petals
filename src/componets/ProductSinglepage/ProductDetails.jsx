@@ -315,7 +315,7 @@ const ProductDetail = () => {
               <div className="pd-trust-row">
                 <div className="pd-trust-item">
                   <span className="pd-trust-icon">⚡</span>
-                  <span>1–3 day dispatch</span>
+                  <span>2–5 day dispatch</span>
                 </div>
                 <div className="pd-trust-item">
                   <span className="pd-trust-icon">↩</span>
