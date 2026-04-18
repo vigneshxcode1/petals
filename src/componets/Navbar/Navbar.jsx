@@ -3,13 +3,59 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import logo from "../images/logo.jpg";
 
+/* ── Nav Icons ── */
+const IconHome = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5z" />
+    <path d="M9 21V12h6v9" />
+  </svg>
+);
+
+const IconHairCare = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2a4 4 0 0 1 4 4c0 1.5-.5 2.8-1.3 3.8" />
+    <path d="M8.7 9.8A4 4 0 0 1 8 6a4 4 0 0 1 4-4" />
+    <path d="M12 10c-2 2-3 4-3 7a3 3 0 0 0 6 0c0-3-1-5-3-7z" />
+    <path d="M9 17c-2 0-4-1-4-3 0-1.5 1-2.5 2-3" />
+    <path d="M15 17c2 0 4-1 4-3 0-1.5-1-2.5-2-3" />
+  </svg>
+);
+
+const IconSkinCare = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22C6.5 22 2 17.5 2 12S6.5 2 12 2s10 4.5 10 10" />
+    <path d="M17 17c0 2.8-2.2 5-5 5" />
+    <circle cx="12" cy="12" r="3" />
+    <path d="M12 5v2M12 17v2M5 12h2M17 12h2" />
+  </svg>
+);
+
+const IconNewArrivals = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z" />
+  </svg>
+);
+
+const IconContact = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+  </svg>
+);
+
+const IconOurStory = () => (
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+  </svg>
+);
+
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Hair Care", href: "#" },
-  { label: "Skin Care", href: "#" },
-  { label: "New Arrivals", href: "/products" },
-  { label: "Contact", href: "/contact" },
-  { label: "Our Story", href: "/about" },
+  { label: "Home", href: "/", icon: <IconHome /> },
+  { label: "Hair Care", href: "#", icon: <IconHairCare /> },
+  { label: "Skin Care", href: "#", icon: <IconSkinCare /> },
+  { label: "New Arrivals", href: "/products", icon: <IconNewArrivals /> },
+  { label: "Contact", href: "/contact", icon: <IconContact /> },
+  { label: "Our Story", href: "/about", icon: <IconOurStory /> },
 ];
 
 const TICKER_MSGS = [
@@ -52,6 +98,7 @@ function NavItem({ item }) {
       onMouseLeave={() => setOpen(false)}
     >
       <a href={item.href} className="nav-a">
+        {item.icon && <span className="nav-icon">{item.icon}</span>}
         {item.label}
         {item.children && <span className="nav-chevron" aria-hidden="true" />}
       </a>
@@ -74,42 +121,58 @@ function NavItem({ item }) {
 /* ── Mobile accordion ── */
 function DrawerItem({ item, onClose }) {
   const [open, setOpen] = useState(false);
+
+  const content = (
+    <>
+      <span className="drawer-text">{item.label}</span>
+      {item.icon && <span className="drawer-nav-icon">{item.icon}</span>}
+    </>
+  );
+
+  if (item.children) {
+    return (
+      <div className="drawer-item">
+        <button
+          className="drawer-link drawer-link--row"
+          onClick={() => setOpen((v) => !v)}
+        >
+          {content}
+        </button>
+
+        {open && (
+          <div className="drawer-sub">
+            {item.children.map((c) => (
+              <Link
+                key={c.label}
+                to={c.href}
+                className="drawer-sub-link"
+                onClick={onClose}
+              >
+                {c.label}
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
+    );
+  }
+
   return (
     <div className="drawer-item">
-      <button
-        className="drawer-link"
-        onClick={() => (item.children ? setOpen((v) => !v) : onClose())}
-        aria-expanded={item.children ? open : undefined}
+      <Link
+        to={item.href}
+        className="drawer-link drawer-link--row"
+        onClick={() => {
+          onClose();
+          window.scrollTo(0, 0);
+        }}
       >
-        <span>{item.label}</span>
-        {item.children && (
-          <svg
-            className={`drawer-chevron ${open ? "drawer-chevron--open" : ""}`}
-            viewBox="0 0 20 20"
-            fill="none"
-            width="14"
-            height="14"
-            stroke="currentColor"
-            strokeWidth="1.8"
-          >
-            <path d="M5 7.5l5 5 5-5" />
-          </svg>
-        )}
-      </button>
-      {item.children && open && (
-        <div className="drawer-sub">
-          {item.children.map((c) => (
-            <a key={c} href="#" className="drawer-sub-link" onClick={onClose}>
-              {c}
-            </a>
-          ))}
-        </div>
-      )}
+        {content}
+      </Link>
     </div>
   );
 }
-
-/* ── Icons ── */
+/* ── Navbar Icons ── */
 const IconSearch = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6">
     <circle cx="11" cy="11" r="7" />
@@ -142,20 +205,17 @@ export default function Navbar({ cartCount = 0 }) {
   const drawerRef = useRef(null);
   const searchRef = useRef(null);
 
-  /* shadow on scroll */
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* lock body when drawer open */
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
     return () => { document.body.style.overflow = ""; };
   }, [menuOpen]);
 
-  /* close drawer on outside click */
   useEffect(() => {
     const handler = (e) => {
       if (menuOpen && drawerRef.current && !drawerRef.current.contains(e.target))
@@ -165,7 +225,6 @@ export default function Navbar({ cartCount = 0 }) {
     return () => document.removeEventListener("mousedown", handler);
   }, [menuOpen]);
 
-  /* close search on outside click */
   useEffect(() => {
     const handler = (e) => {
       if (searchOpen && searchRef.current && !searchRef.current.contains(e.target))
@@ -177,28 +236,13 @@ export default function Navbar({ cartCount = 0 }) {
 
   const close = () => setMenuOpen(false);
 
-  /* double ticker messages for seamless loop */
-  const tickerDouble = [...TICKER_MSGS, ...TICKER_MSGS];
-
   return (
     <>
-      {/* ── Ticker ── */}
-      {/* <div className="ticker" role="marquee" aria-label="Promotions">
-        <div className="ticker-track">
-          {tickerDouble.map((msg, i) => (
-            <span key={i} className="ticker-item">
-              <span className="ticker-dot" aria-hidden="true">✦</span>
-              {msg}
-            </span>
-          ))}
-        </div>
-      </div> */}
-
       {/* ── Navbar ── */}
       <header className={`navbar ${scrolled ? "navbar--scrolled" : ""}`}>
         <div className="navbar-inner">
 
-          {/* LEFT — Hamburger (mobile) + Logo */}
+          {/* LEFT */}
           <div className="navbar-left">
             <button
               className="hamburger"
@@ -212,11 +256,7 @@ export default function Navbar({ cartCount = 0 }) {
             </button>
 
             <Link to="/" className="logo" aria-label="Muthu's Petals – Home">
-              <img
-                src={logo}
-                alt="Muthu's Petals Logo"
-                className="logo-img"
-              />
+              <img src={logo} alt="Muthu's Petals Logo" className="logo-img" />
               <span className="logo-text">
                 Muthu's Petals
                 <em className="logo-tagline">Nourishing Hair & Skin Care</em>
@@ -224,7 +264,7 @@ export default function Navbar({ cartCount = 0 }) {
             </Link>
           </div>
 
-          {/* CENTRE — Nav links (desktop) */}
+          {/* CENTRE */}
           <nav className="nav-links" aria-label="Primary navigation">
             <ul>
               {navItems.map((item) => (
@@ -233,25 +273,15 @@ export default function Navbar({ cartCount = 0 }) {
             </ul>
           </nav>
 
-          {/* RIGHT — Icons */}
+          {/* RIGHT */}
           <div className="navbar-right">
-            {/* Search */}
-
-
             <Link to="/profile" className="icon-btn" aria-label="My account">
               <IconAccount />
             </Link>
-
-            <Link
-              to="/cart"
-              className="icon-btn cart-btn"
-              aria-label={`Cart, ${cartCount} items`}
-            >
+            <Link to="/cart" className="icon-btn cart-btn" aria-label={`Cart, ${cartCount} items`}>
               <IconBag />
               {cartCount > 0 && (
-                <span className="cart-badge" aria-hidden="true">
-                  {cartCount}
-                </span>
+                <span className="cart-badge" aria-hidden="true">{cartCount}</span>
               )}
             </Link>
           </div>
@@ -275,51 +305,31 @@ export default function Navbar({ cartCount = 0 }) {
         role="dialog"
         hidden={!menuOpen}
       >
-        {/* Header */}
         <div className="drawer-head">
           <Link to="/" className="drawer-logo" onClick={close}>
             <FloralIcon />
             Muthu's Petals
           </Link>
           <button className="drawer-close" onClick={close} aria-label="Close menu">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.8"
-              width="18"
-              height="18"
-            >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" width="18" height="18">
               <path d="M18 6 6 18M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        {/* Nav */}
         <nav className="drawer-nav">
           {navItems.map((item) => (
             <DrawerItem key={item.label} item={item} onClose={close} />
           ))}
         </nav>
 
-        {/* Footer */}
         <div className="drawer-footer">
           <div className="drawer-footer-icons">
-            <Link
-              to="/profile"
-              className="drawer-foot-btn"
-              onClick={close}
-              aria-label="Account"
-            >
+            <Link to="/profile" className="drawer-foot-btn" onClick={close} aria-label="Account">
               <IconAccount />
               <span>Account</span>
             </Link>
-            <Link
-              to="/cart"
-              className="drawer-foot-btn"
-              onClick={close}
-              aria-label="Cart"
-            >
+            <Link to="/cart" className="drawer-foot-btn" onClick={close} aria-label="Cart">
               <IconBag />
               <span>Cart {cartCount > 0 && `(${cartCount})`}</span>
             </Link>

@@ -2,6 +2,8 @@ import React from "react";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.jpg"
+import { FaEnvelope, FaPhone, FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
+
 
 
 const Footer = () => {
@@ -39,18 +41,51 @@ const Footer = () => {
         {/* Contact */}
         <div className="footer-col">
           <h3>Contact</h3>
-          <p>Email: <a href="mailto:muthuspetals@gmail.com"> muthuspetals@gmail.com</a></p>
-          <p>Phone: <a href="tel:+916381181527">+91 6381181527</a></p>
-          <p><Link to="/contact">Social Media</Link></p>
+
+          <p>
+            <FaEnvelope style={{ marginRight: "8px" }} />
+            Email:{" "}
+            <a href="mailto:muthuspetals@gmail.com">
+              muthuspetals@gmail.com
+            </a>
+          </p>
+
+          <p>
+            <FaPhone style={{ marginRight: "8px" }} />
+            Phone:{" "}
+            <a href="tel:+916381181527">
+              +91 6381181527
+            </a>
+          </p>
+
+          <p>
+            <Link to="/contact">Contact Link</Link>
+          </p>
         </div>
 
-
         <div className="footer-col">
-          <h3>social media</h3>
-          <p> <a href="https://www.instagram.com/?hl=en">Instagram</a></p>
-          <p> <a href="https://www.facebook.com/profile.php?id=61579168031168">facebook</a></p>
-          <p> <a href="https://www.youtube.com/@MuthusPetals">Youtube</a></p>
+          <h3>Social Media</h3>
 
+          <p>
+            <FaInstagram style={{ marginRight: "8px", color: "#E4405F" }} />
+            <a href="https://www.instagram.com/muthus_petals_official?utm_source=qr&igsh=dmt1OWJpcWFmcHlp">
+              Instagram
+            </a>
+          </p>
+
+          <p>
+            <FaFacebook style={{ marginRight: "8px", color: "#1877F2" }} />
+            <a href="https://www.facebook.com/profile.php?id=61579168031168">
+              Facebook
+            </a>
+          </p>
+
+          <p>
+            <FaYoutube style={{ marginRight: "8px", color: "#FF0000" }} />
+            <a href="https://www.youtube.com/@MuthusPetals">
+              YouTube
+            </a>
+          </p>
         </div>
 
 

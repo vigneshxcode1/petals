@@ -14,7 +14,7 @@ const cards = [
   },
   {
     img: img2,
-    title: "No Side Effects",
+    title: "Gentle on Skin & hair",
     desc: "Hair elegance with 0% side effects",
     delay: "0.15s",
   },

@@ -1,232 +1,218 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
-import "./CardSlider.css";
 
+
+import React, { useEffect, useState, useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import '../../componets/Product/slidercard/Trendingshirt.css'
 const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
 
-const MOCK_PRODUCTS = [
-  {
-    _id: "p1",
-    name: "Classic White Oversized T-Shirt",
-    price: 799,
-    cutprice: 1199,
-    createdAt: "2026-04-01",
-    images: ["https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQBzy1Q9TxJ7et4ksLNXNfcVdfAvXEciTeMU0R4WVEDghPAbcaV4EMpVN7DtjkKzcahxx9SzNzJmGxsmO_caspLP98ziZ70Sc8k7lFg2Ze68Pw5k9mH7Czyfg"]
-  },
-  {
-    _id: "p2",
-    name: "Black Streetwear Graphic Tee",
-    price: 899,
-    cutprice: 1399,
-    createdAt: "2026-04-02",
-    images: ["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR60zUZD_MLN22QG_vlfH1DpUWhPIm4sqKbOQ&s"]
-  },
-  {
-    _id: "p3",
-    name: "Minimal Beige Cotton T-Shirt",
-    price: 699,
-    cutprice: 999,
-    createdAt: "2026-04-03",
-    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
-  },
-  {
-    _id: "p4",
-    name: "Vintage Washed Black Tee",
-    price: 999,
-    cutprice: 1499,
-    createdAt: "2026-04-04",
-    images: ["https://www.vilvahstore.com/cdn/shop/files/Firstcard_1.jpg?v=1769172467&width=700"]
-  },
-  {
-    _id: "p5",
-    name: "Urban Printed Drop-Shoulder Tee",
-    price: 849,
-    cutprice: 1299,
-    createdAt: "2026-04-05",
-    images: ["https://i.ibb.co/kVRL2WVL/serum-bottle-flower-arrangement.jpg"]
-  },
-  {
-    _id: "p6",
-    name: "Pastel Blue Relaxed Fit T-Shirt",
-    price: 749,
-    cutprice: 1099,
-    createdAt: "2026-04-06",
- images: ["https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQBzy1Q9TxJ7et4ksLNXNfcVdfAvXEciTeMU0R4WVEDghPAbcaV4EMpVN7DtjkKzcahxx9SzNzJmGxsmO_caspLP98ziZ70Sc8k7lFg2Ze68Pw5k9mH7Czyfg"]  }
-];
 
-const BADGES = ["BEST SELLER", "TRENDING", "NEW ARRIVAL", "HOT PICK", "TOP RATED"];
 
+// Badge labels cycling through cards
+const BADGE_LABELS = ["Best Seller", "Best Seller", "Trending", "Selling Fast"];
+const BADGE_CLASSES = ["badge--dark", "badge--dark", "badge--teal", "badge--warm"];
+
+// Render filled / half / empty stars
 const StarRating = ({ rating = 4.5, count = 0 }) => {
-  const stars = Array.from({ length: 5 }, (_, i) => {
-    const filled = i + 1 <= Math.floor(rating);
-    const half = !filled && i < rating;
-    return { filled, half };
-  });
-
+  const stars = [];
+  for (let i = 1; i <= 5; i++) {
+    const fill = Math.min(1, Math.max(0, rating - (i - 1)));
+    if (fill >= 0.75) {
+      stars.push(<span key={i} className="ts-star ts-star--full">★</span>);
+    } else if (fill >= 0.25) {
+      stars.push(<span key={i} className="ts-star ts-star--half">★</span>);
+    } else {
+      stars.push(<span key={i} className="ts-star ts-star--empty">★</span>);
+    }
+  }
   return (
-    <div className="star-row">
-      <span className="stars">
-        {stars.map((s, i) => (
-          <span key={i} className={`star ${s.filled ? "filled" : s.half ? "half" : "empty"}`}>
-            ★
-          </span>
-        ))}
-      </span>
-      <span className="review-count">{rating.toFixed(2)} | {count} reviews</span>
+    <div className="ts-rating-row">
+      <span className="ts-stars">{stars}</span>
+      <span className="ts-rating-val">{rating.toFixed(2)}</span>
+      {count > 0 && <span className="ts-review-count">| {count.toLocaleString()} reviews</span>}
     </div>
   );
 };
 
-const SkeletonCard = () => (
-  <div className="product-card skeleton-card">
-    <div className="skeleton skeleton-img" />
-    <div className="card-body">
-      <div className="skeleton skeleton-line long" />
-      <div className="skeleton skeleton-line medium" />
-      <div className="skeleton skeleton-line short" />
-    </div>
-  </div>
-);
-
-const ProductCard = ({ product, index }) => {
-  const navigate = useNavigate();
-  const ref = useRef(null);
-  const [hovered, setHovered] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setTimeout(() => el.classList.add("show"), index * 60);
-          observer.unobserve(el);
-        }
-      },
-      { threshold: 0.15 }
-    );
-    if (el) observer.observe(el);
-    return () => observer.disconnect();
-  }, [index]);
 
 
-
-  const discount =
-    product.cutprice && product.price
-      ? Math.round(((product.cutprice - product.price) / product.cutprice) * 100)
-      : null;
-
-  const badge = BADGES[index % BADGES.length];
-  const fakeRating = parseFloat((4.5 + Math.random() * 0.49).toFixed(2));
-  const fakeCount = Math.floor(Math.random() * 1500) + 100;
-
-  return (
-    <div
-      className="product-card"
-      ref={ref}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onClick={() => navigate(`/products/${product._id}`)}
-    >
-      <div className="img-wrapper">
-        {product.images?.length ? (
-          <img
-            src={product.images[0]}
-            alt={product.name}
-            className={`card-img ${hovered ? "zoomed" : ""}`}
-          />
-        ) : (
-          <div className="no-img">No Image</div>
-        )}
-
-        <span className="badge-label">{badge}</span>
-
-        {discount > 0 && (
-          <span className="discount-bubble">{discount}% OFF</span>
-        )}
-
-        <div className={`quick-view-bar ${hovered ? "visible" : ""}`}>
-          <span>Quick View</span>
-        </div>
-      </div>
-
-      <div className="card-body">
-        <p className="product-name">{product.name}</p>
-
-        <StarRating rating={fakeRating} count={fakeCount} />
-
-        <div className="price-row">
-          <span className="mrp-label">MRP:</span>
-          {product.cutprice && (
-            <span className="original-price">₹{product.cutprice}</span>
-          )}
-          <span className="sale-price">₹{product.price}</span>
-          {discount > 0 && (
-            <span className="off-pill">{discount}% OFF</span>
-          )}
-        </div>
-      </div>
-    </div>
-  );
-};
 
 const Trendingshirt = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState("All");
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const trackRef = useRef(null);
 
-  const tabs = ["All", "Hair", "Skin", "Body"];
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const res = await axios.get(`${BASE_URL}/api/v1/products?category=Shampoo`);
-  //       const sorted = res.data.product.sort(
-  //         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-  //       );
-  //       setProducts(sorted.slice(0, 16));
-  //     } catch (err) {
-  //       console.error(err);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
-
+  /* ── Drag-to-scroll ── */
   useEffect(() => {
-    setLoading(true);
+    const el = trackRef.current;
+    if (!el) return;
+    let isDown = false, startX, scrollLeft;
 
-    const sorted = [...MOCK_PRODUCTS].sort(
-      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-    );
+    const down = (e) => { isDown = true; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft; el.style.cursor = "grabbing"; };
+    const leave = () => { isDown = false; el.style.cursor = "grab"; };
+    const up = () => { isDown = false; el.style.cursor = "grab"; };
+    const move = (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX);
+    };
 
-    setTimeout(() => {
-      setProducts(sorted);
-      setLoading(false); // ✅ IMPORTANT
-    }, 800);
+    el.addEventListener("mousedown", down);
+    el.addEventListener("mouseleave", leave);
+    el.addEventListener("mouseup", up);
+    el.addEventListener("mousemove", move);
+    return () => {
+      el.removeEventListener("mousedown", down);
+      el.removeEventListener("mouseleave", leave);
+      el.removeEventListener("mouseup", up);
+      el.removeEventListener("mousemove", move);
+    };
+  }, [products]);
+
+  /* ── Fetch products ── */
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+       
+      
+        const res    = await axios.get(`${BASE_URL}/api/v1/products`);
+        const sorted = res.data.product.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        const first15 = sorted.slice(0, 15);
+        localStorage.setItem("Shampoo", JSON.stringify(first15));
+        setProducts(first15);
+      } catch (err) {
+        console.error("Error fetching products:", err);
+        setError("Unable to load products. Please check your connection.");
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProducts();
   }, []);
 
+
+  console.log(products)
+
+
+  if (loading) return (
+    <div className="ts-section">
+      <div className="ts-loading">
+        <div className="ts-spinner" />
+        <p className="ts-loading-text">Curating collection…</p>
+      </div>
+    </div>
+  );
+
+  if (error) return (
+    <div className="ts-section">
+      <div className="ts-loading">
+        <p className="ts-loading-text">{error}</p>
+      </div>
+    </div>
+  );
+
   return (
-    <section className="products-section">
-      <div className="section-header">
-        <h2 className="section-title">New Arrivals</h2>
-        <p className="section-sub">Latest natural products, curated for you</p>
+    <section className="ts-section">
 
-
+      {/* ── Header ── */}
+      <div className="ts-header-block">
+        <div>
+          
+          <h2 className="ts-title">
+            Natural <em>Shampoo</em> <em>Collection</em>
+          </h2>
+        </div>
+        <Link className="ts-see-all" to="/products">View all →</Link>
       </div>
 
-      <div className="product-grid">
-        {loading
-          ? Array.from({ length: 8 }).map((_, i) => <SkeletonCard key={i} />)
-          : products.map((p, i) => (
-            <ProductCard key={p._id} product={p} index={i} />
-          ))}
+      {/* ── Scrollable track ── */}
+      <div className="ts-track-wrapper">
+        <div className="ts-track" ref={trackRef}>
+          {products.map((product, idx) => {
+            const badgeLabel = BADGE_LABELS[idx % BADGE_LABELS.length];
+            const badgeClass = BADGE_CLASSES[idx % BADGE_CLASSES.length];
+
+            // Derive a fake-but-consistent discount % from cutprice / price
+            const mrp = Number(product.cutprice) || 0;
+            const price = Number(product.price) || 0;
+            const discount = mrp > price && mrp > 0
+              ? Math.round(((mrp - price) / mrp) * 100)
+              : 0;
+
+            // Fake rating seeded from product id (consistent per product)
+            const seed = product._id?.charCodeAt(product._id.length - 1) ?? 50;
+            const rating = 4 + (seed % 10) / 10;   // 4.0 – 4.9
+            const reviews = 200 + (seed * 7) % 1400;
+
+            return (
+              <div
+                className="ts-card"
+                key={product._id}
+                style={{ "--i": idx }}
+                onClick={() => navigate(`/products/${product._id}`)}
+              >
+                {/* Image */}
+                <div className="ts-img-wrap">
+                  <span className={`ts-badge ${badgeClass}`}>{badgeLabel}</span>
+                  {product.images?.length > 0 ? (
+                    <img
+                      className="ts-img"
+                      src={product.images[0]}
+                      alt={product.name}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div className="ts-img-placeholder" />
+                  )}
+                </div>
+
+                {/* Body */}
+                <div className="ts-card-body">
+                  <p className="ts-name">{product.name}</p>
+
+                  <StarRating rating={rating} count={reviews} />
+
+                  {/* Pricing */}
+                  <div className="ts-pricing-row">
+                    <span className="ts-mrp-label">MRP:</span>
+                    <span className="ts-price-org">₹{price}</span>
+                    {mrp > 0 && <span className="ts-price-cut">₹{mrp}</span>}
+                    {discount > 0 && (
+                      <span className="ts-discount-badge">{discount}% OFF</span>
+                    )}
+                  </div>
+
+                  {/* Volume chip */}
+                  {product.size && (
+                    <div className="ts-size-row">
+                      <span className="ts-size-chip">
+                        {product.size}
+                        <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+                          <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                        </svg>
+                      </span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
+
+      {/* ── Scroll hint dots ── */}
+      <div className="ts-scroll-hint">
+        <div className="ts-dot active" />
+        <div className="ts-dot" />
+        <div className="ts-dot" />
+      </div>
+
     </section>
   );
 };
 
 export default Trendingshirt;
+

@@ -25,6 +25,51 @@
   --trans-med:  0.28s cubic-bezier(0.4,0,0.2,1);
 }
 
+
+.drawer-link--row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* TEXT LEFT, ICON RIGHT */
+  width: 100%;
+  padding: 14px 16px;
+  gap: 12px;
+}
+
+.drawer-text {
+  flex: 1;
+  text-align: left;
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+}
+
+.drawer-nav-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  min-width: 26px;
+}
+
+/* optional: better tap feel */
+.drawer-link {
+  border-radius: 10px;
+}
+
+.drawer-link:active {
+  background: rgba(0,0,0,0.05);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.nav-link:hover svg {
+  transform: scale(1.1);
+  transition: 0.2s ease;
+}
 /* ═══════════════════════════════════════
    TICKER
 ═══════════════════════════════════════ */
