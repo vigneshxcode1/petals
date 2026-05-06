@@ -3,7 +3,7 @@ import "./Footer.css";
 import { Link } from "react-router-dom";
 import logo from "../images/logo.jpg"
 import { FaEnvelope, FaPhone, FaInstagram, FaFacebook, FaYoutube } from "react-icons/fa";
-
+import { LuPhone } from "react-icons/lu";
 
 
 const Footer = () => {
@@ -51,7 +51,7 @@ const Footer = () => {
           </p>
 
           <p>
-            <FaPhone style={{ marginRight: "8px" }} />
+            <LuPhone style={{ marginRight: "8px" }} />
             Phone:{" "}
             <a href="tel:+916381181527">
               +91 6381181527

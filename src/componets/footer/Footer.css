@@ -7,19 +7,21 @@
 }
 
 .footer-logo-img {
-  width: 58px;
-  height: 58px;
+  width: 50px;          /* slightly smaller = better alignment */
+  height: 50px;
   object-fit: contain;
+  display: block;       /* removes inline spacing issue */
 }
 
 .footer-logo-text {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 700;
-  letter-spacing: 0.5px;
   margin: 0;
+  line-height: 1;       /* important: removes extra vertical space */
+  display: flex;
+  align-items: center;  /* ensures text centers with logo */
 }
-
 
 
 .footer {

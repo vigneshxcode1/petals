@@ -4,6 +4,8 @@ import React, { useEffect, useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Trendingshirt.css";
+import loadingimg from "../../../componets/images/7LXw.gif";
+
 
 const BASE_URL = "https://petals-backend-p9st.onrender.com";
 
@@ -97,13 +99,13 @@ const Trendingshirt = () => {
   console.log(products)
 
   if (loading) return (
-    <div className="ts-section">
-      <div className="ts-loading">
-        <div className="ts-spinner" />
-        <p className="ts-loading-text">Curating collection…</p>
-      </div>
-    </div>
+     <div className="pd-loading">
+          <img src={loadingimg} alt="Loading..." className="pd-loading-img" />
+          <p className="pd-loading-text">Curating collection…</p>
+        </div>
   );
+
+ 
 
   if (error) return (
     <div className="ts-section">

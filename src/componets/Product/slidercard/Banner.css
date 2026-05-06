@@ -273,6 +273,7 @@
 @media (min-width: 1400px) {
   .bn-hero { padding: 70px 100px 70px 100px; }
   .bn-cats { padding: 0 100px 72px; }
+
 }
 
 /* Medium desktop / laptop */
@@ -280,6 +281,7 @@
   .bn-hero { padding: 52px 48px 52px 56px; gap: 28px; }
   .bn-cats { padding: 0 48px 56px; }
   .bn-h1   { font-size: clamp(32px, 4vw, 50px); }
+    
 }
 
 /* Tablet (768px – 1023px) */
@@ -295,7 +297,7 @@
   .bn-blob--right { width: 300px; height: 300px; right: -80px; bottom: 5%; top: auto; transform: none; }
 
   .bn-left { max-width: 100%; }
-  .bn-eyebrow { justify-content: center; }
+  .bn-eyebrow {  margin: 0 0 20px; }
   .bn-sub { margin-left: auto; margin-right: auto; }
   .bn-btns { justify-content: center; }
   .bn-trust { justify-content: center; }
