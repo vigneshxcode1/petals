@@ -1,0 +1,395 @@
+/* =========================================
+   REVIEW GALLERY PAGE
+   Aesthetic: warm editorial / magazine
+========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@400;500&display=swap');
+
+:root {
+  --cream:   #fdf8f3;
+  --ink:     #1a1209;
+  --plum:    #822aae;
+  --plum-lt: #b857df;
+  --blush:   #f1d8ff;
+  --stone:   #8a8078;
+  --card-r:  18px;
+}
+
+/* =========================================
+   PAGE
+========================================= */
+
+.rg-page {
+  min-height: 100vh;
+  background: var(--cream);
+  padding-bottom: 80px;
+  font-family: 'DM Sans', sans-serif;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.rg-header {
+  text-align: center;
+  padding: 64px 24px 40px;
+}
+
+.rg-eyebrow {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--plum);
+  margin-bottom: 12px;
+}
+
+.rg-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(36px, 6vw, 64px);
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0 0 12px;
+  line-height: 1.1;
+}
+
+.rg-subtitle {
+  font-size: 15px;
+  color: var(--stone);
+  margin-bottom: 32px;
+}
+
+.rg-divider {
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--plum), var(--plum-lt));
+  border-radius: 99px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   STATES  (loading / error / empty)
+========================================= */
+
+.rg-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 80px 24px;
+  color: var(--stone);
+  font-size: 15px;
+}
+
+.rg-state--error {
+  color: #c93838;
+}
+
+.rg-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--blush);
+  border-top-color: var(--plum);
+  border-radius: 50%;
+  animation: rg-spin 0.8s linear infinite;
+}
+
+@keyframes rg-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* =========================================
+   MASONRY GRID
+========================================= */
+
+.rg-grid {
+  columns: 4 240px;
+  column-gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* =========================================
+   GALLERY CARD
+========================================= */
+
+.rg-card {
+  break-inside: avoid;
+  margin-bottom: 20px;
+  border-radius: var(--card-r);
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 20px rgba(26, 18, 9, 0.07);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: rg-rise 0.5s ease both;
+}
+
+.rg-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(130, 42, 174, 0.14);
+}
+
+/* stagger each card's entry */
+.rg-card:nth-child(1)  { animation-delay: 0.05s; }
+.rg-card:nth-child(2)  { animation-delay: 0.10s; }
+.rg-card:nth-child(3)  { animation-delay: 0.15s; }
+.rg-card:nth-child(4)  { animation-delay: 0.20s; }
+.rg-card:nth-child(5)  { animation-delay: 0.25s; }
+.rg-card:nth-child(6)  { animation-delay: 0.30s; }
+.rg-card:nth-child(7)  { animation-delay: 0.35s; }
+.rg-card:nth-child(8)  { animation-delay: 0.40s; }
+
+@keyframes rg-rise {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* image wrap */
+.rg-card-img-wrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.rg-card-img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.rg-card:hover .rg-card-img {
+  transform: scale(1.06);
+}
+
+/* hover overlay with preview text */
+.rg-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(26, 18, 9, 0.75) 0%,
+    rgba(26, 18, 9, 0) 55%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 16px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.rg-card:hover .rg-card-overlay {
+  opacity: 1;
+}
+
+.rg-card-preview {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.9);
+  font-style: italic;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* card with no image */
+.rg-card-no-img {
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8eeff, #fdf4ff);
+}
+
+/* footer */
+.rg-card-footer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 16px;
+}
+
+.rg-card-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.rg-card-dot {
+  color: var(--stone);
+  font-size: 10px;
+}
+
+.rg-card-label {
+  font-size: 12px;
+  color: var(--stone);
+}
+
+/* =========================================
+   INITIALS AVATAR
+========================================= */
+
+.rg-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--plum), var(--plum-lt));
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+}
+
+/* =========================================
+   LIGHTBOX OVERLAY
+========================================= */
+
+.rg-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 18, 9, 0.72);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 24px;
+  animation: rg-fade-in 0.2s ease;
+}
+
+@keyframes rg-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.rg-lightbox {
+  background: #fff;
+  border-radius: 24px;
+  overflow: hidden;
+  max-width: 520px;
+  width: 100%;
+  position: relative;
+  animation: rg-pop 0.25s ease;
+  box-shadow: 0 32px 80px rgba(26, 18, 9, 0.28);
+}
+
+@keyframes rg-pop {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.rg-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(4px);
+  color: var(--ink);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+
+.rg-close:hover {
+  background: #fff;
+}
+
+/* lightbox image */
+.rg-lb-img-wrap {
+  width: 100%;
+  max-height: 340px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8eeff, #fdf4ff);
+}
+
+.rg-lb-img {
+  width: 100%;
+  object-fit: cover;
+  max-height: 340px;
+  display: block;
+}
+
+/* lightbox body */
+.rg-lb-body {
+  padding: 28px 32px 32px;
+}
+
+.rg-lb-quote {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.85;
+  color: #333;
+  margin: 0 0 24px;
+}
+
+.rg-lb-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.rg-lb-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.rg-lb-tag {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #fff;
+  background: linear-gradient(135deg, var(--plum), var(--plum-lt));
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+  .rg-grid {
+    columns: 2 160px;
+    column-gap: 14px;
+    padding: 0 16px;
+  }
+
+  .rg-card-footer {
+    padding: 10px 12px;
+  }
+
+  .rg-lb-body {
+    padding: 20px 20px 24px;
+  }
+
+  .rg-lb-quote {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 420px) {
+  .rg-grid {
+    columns: 1;
+  }
+
+  .rg-header {
+    padding: 40px 16px 28px;
+  }
+}
